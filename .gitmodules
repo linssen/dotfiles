@@ -1,3 +1,27 @@
 [submodule "vim/vim.symlink/bundle/ctrlp.vim"]
 	path = vim/vim.symlink/bundle/ctrlp.vim
 	url = https://github.com/kien/ctrlp.vim.git
+[submodule "vim/vim.symlink/bundle/nerdtree.vim"]
+	path = vim/vim.symlink/bundle/nerdtree.vim
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule "vim/vim.symlink/bundle/ack.vim"]
+	path = vim/vim.symlink/bundle/ack.vim
+	url = https://github.com/mileszs/ack.vim.git
+[submodule "vim/vim.symlink/bundle/nerdcommenter.vim"]
+	path = vim/vim.symlink/bundle/nerdcommenter.vim
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/vim.symlink/bundle/powerline.vim"]
+	path = vim/vim.symlink/bundle/powerline.vim
+	url = git://github.com/Lokaltog/vim-powerline.git
+[submodule "vim/vim.symlink/bundle/fugitive.vim"]
+	path = vim/vim.symlink/bundle/fugitive.vim
+	url = git://github.com/tpope/vim-fugitive.git
+[submodule "vim/vim.symlink/bundle/markdown.vim"]
+	path = vim/vim.symlink/bundle/markdown.vim
+	url = git://github.com/plasticboy/vim-markdown.git
+[submodule "vim/vim.symlink/bundle/coffee-script.vim"]
+	path = vim/vim.symlink/bundle/coffee-script.vim
+	url = git://github.com/kchmck/vim-coffee-script.git
+[submodule "vim/vim.symlink/bundle/textile.vim"]
+	path = vim/vim.symlink/bundle/textile.vim
+	url = git://github.com/timcharper/textile.vim.git
