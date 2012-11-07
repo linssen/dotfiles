@@ -1,3 +1,18 @@
+# Basic options
+# ---------------------------------------------------------------------
+set -g prefix C-a
+bind C-a send-prefix
+
+bind | split-window -h
+bind - split-window -v
+
+# Colour
+# ---------------------------------------------------------------------
+source ~/.tmux/colors/solarized/tmuxcolors-256.conf
+
+
+# Powerline
+# ---------------------------------------------------------------------
 set-option -g status on
 set-option -g status-interval 2
 set-option -g status-utf8 on
@@ -5,5 +20,3 @@ set-option -g status-justify "centre"
 set-option -g status-left-length 60
 set-option -g status-right-length 90
 set-option -g status-left "#(~/.tmux/tmux-powerline/status-left.sh)"
-
-source ~/.tmux/colors/solarized/tmuxcolors-256.conf
