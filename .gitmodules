@@ -25,3 +25,9 @@
 [submodule "vim/vim.symlink/bundle/textile.vim"]
 	path = vim/vim.symlink/bundle/textile.vim
 	url = git://github.com/timcharper/textile.vim.git
+[submodule "tmux/tmux.symlink/tmux-powerline"]
+	path = tmux/tmux.symlink/tmux-powerline
+	url = git://github.com/erikw/tmux-powerline.git
+[submodule "tmux/tmux.symlink/colors/solarized"]
+	path = tmux/tmux.symlink/colors/solarized
+	url = git://github.com/seebi/tmux-colors-solarized.git
