@@ -1,0 +1,18 @@
+[user]                                                                                                                
+    name = Wil Linssen
+    email = wil@linssen.me
+[color]
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
+[alias]
+    st = status
+    lg = log --pretty=oneline
+    rs = reset --hard HEAD
+[core]
+    excludesfile = /Users/wil/.gitignore
+[merge]
+    tool = opendiff
+[difftool]
+    prompt = false
