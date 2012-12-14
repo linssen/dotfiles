@@ -5,3 +5,8 @@ export PATH=$homebrew:$PATH
 # Tmux powerline help and colouring
 export PLATFORM="mac"
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+
+# Autocomplete Git if we can
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
