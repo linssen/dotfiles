@@ -1,7 +1,3 @@
-# Ensure Homebrew is before regs bin files
-homebrew=/usr/local/bin:/usr/local/sbin
-export PATH=$homebrew:$PATH
-
 # Tmux powerline help and colouring
 export PLATFORM="mac"
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
