@@ -1,10 +1,14 @@
 call pathogen#infect()
 filetype plugin indent on
 
-
 " Basic options
 " ---------------------------------------------------------------------
 set encoding=utf-8
+
+" General
+" ---------------------------------------------------------------------
+" Write sudo
+cnoremap w!! w !sudo tee % >/dev/null
 
 " Spacing
 " ---------------------------------------------------------------------
