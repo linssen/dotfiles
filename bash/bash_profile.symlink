@@ -1,8 +1,9 @@
 # Ensure Homebrew is before regs bin files
 homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
+node_packages=/usr/local/share/npm/bin/
 rvm=$HOME/.rvm/bin
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
-export PATH=$homebrew:$node:$rvm:$PATH
+export PATH=$homebrew:$node:$node_packages:$rvm:$PATH
