@@ -88,3 +88,16 @@ set incsearch
 set showmatch
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>a :Ack<space>
+
+" Relative line numbering toggle
+" ----------------------------------------------------------------------
+function! g:ToggleNuMode() 
+    if(&rnu == 1) 
+        set nu 
+    else 
+        set rnu 
+    endif 
+endfunc 
+
+nnoremap <leader>l :call g:ToggleNuMode()<cr>
+set rnu
