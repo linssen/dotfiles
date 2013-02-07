@@ -88,6 +88,8 @@ set incsearch
 set showmatch
 nnoremap <leader><space> :noh<cr>
 nnoremap <leader>a :Ack<space>
+nnoremap <cr> o<Esc>
+nnoremap <s-Enter> O<Ex>
 
 " Relative line numbering toggle
 " ----------------------------------------------------------------------
