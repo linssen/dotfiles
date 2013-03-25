@@ -31,6 +31,37 @@ link_files () {
     success "linked $1 to $2"
 }
 
+install_sublime () {
+    info 'replacing sublime packages with symlinks'
+
+    user "Replace existing packages with these ones? [y]yes, [n]o"
+    read -n 1 action
+
+    case "$action" in
+        y )
+            overwrite=true;;
+        * )
+            overwrite=false;;
+    esac
+
+    if [ "$overwrite" == "true" ]
+    then
+        dest="$HOME/Library/Application Support/Sublime Text 2"
+        source="$DOTFILES_ROOT/sublime2"
+
+        # TODO recurse or wildcard or something, for goodness sakes
+        rm -rf "$dest/\Packages"
+        rm -rf "$dest/\Installed Packages"
+        rm -rf "$dest/\Pristine Packages"
+
+        link_files "$source/Packages" "$dest/Packages"
+        link_files "$source/Installed Packages" "$dest/Installed Packages"
+        link_files "$source/Pristine Packages" "$dest/Pristine Packages"
+    else
+        success "didn't overwrite sublime packages"
+    fi
+}
+
 install_dotfiles () {
     info 'installing dotfiles'
 
@@ -99,6 +130,7 @@ install_dotfiles () {
 }
 
 install_dotfiles
+install_sublime
 
 echo ''
 echo '  All installed!'

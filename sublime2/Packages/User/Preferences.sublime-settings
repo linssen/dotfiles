@@ -1,0 +1,15 @@
+{
+    "font_size": 12.0,
+    "theme": "Soda Dark.sublime-theme",
+    "drawWhiteSpace": true,
+    "highlight_modified_tabs": true,
+    "hot_exit": false,
+    "ignore_inodes": true,
+    "ignored_packages": [""],
+    "remember_open_files": false,
+    "rulers": [80],
+    "translate_tabs_to_spaces": true,
+    "trim_trailing_white_space_on_save": true,
+    "vintage_start_in_command_mode": true,
+    "theme": "Soda Dark.sublime-theme"
+}
