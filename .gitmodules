@@ -31,3 +31,6 @@
 [submodule "tmux/tmux.symlink/colors/solarized"]
 	path = tmux/tmux.symlink/colors/solarized
 	url = git://github.com/seebi/tmux-colors-solarized.git
+[submodule "vim/vim.symlink/bundle/gitgutter.vim"]
+	path = vim/vim.symlink/bundle/gitgutter.vim
+	url = git://github.com/airblade/vim-gitgutter.git
