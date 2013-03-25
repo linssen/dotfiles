@@ -6,12 +6,14 @@ Install
 
 Run this:
 
+    # Clone the repo into the correct directory
     git clone https://github.com/linssen/dotfiles.git ~/.dotfiles
+    # Change to that directory
     cd ~/.dotfiles
-    rake install
+    # Run the bootstrap script to copy things into the right places
+    script/bootstrap
+    # Install all the dependencies
     git submodule init && git submodule update
-
-That will symlink the appropriate files in `.dotfiles` to your home directory as well as installing all the various required repos for configurations and bundles.
 
 Thanks
 -----------------------------
