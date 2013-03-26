@@ -34,7 +34,7 @@ link_files () {
 install_sublime () {
     info 'replacing sublime packages with symlinks'
 
-    user "Replace existing packages with these ones? [y]yes, [n]o"
+    user "Replace existing Sublime packages with these ones? [y]yes, [n]o"
     read -n 1 action
 
     case "$action" in
@@ -49,10 +49,7 @@ install_sublime () {
         dest="$HOME/Library/Application Support/Sublime Text 2"
         source="$DOTFILES_ROOT/sublime2"
 
-        # TODO recurse or wildcard or something, for goodness sakes
-        rm -rf "$dest/Packages"
-        rm -rf "$dest/Installed Packages"
-        rm -rf "$dest/Pristine Packages"
+        rm -rf "$dest/Packages" "$dest/Installed Packages" "$dest/Pristine Packages"
 
         link_files "$source/Packages" "$dest/Packages"
         link_files "$source/Installed Packages" "$dest/Installed Packages"
