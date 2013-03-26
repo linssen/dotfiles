@@ -1,13 +1,13 @@
 {
 	"files":
 	{
+		"backbone": "http://backbonejs.org/backbone.js",
+		"d3": "https://raw.github.com/mbostock/d3/master/d3.js",
 		"jquery": "http://code.jquery.com/jquery.js",
-        "backbone": "http://backbonejs.org/backbone.js",
-        "underscore": "http://underscorejs.org/underscore.js",
-        "d3": "https://raw.github.com/mbostock/d3/master/d3.js"
+		"underscore": "http://underscorejs.org/underscore.js"
 	},
 	"packages":
 	{
-        "ultimate_package": "https://github.com/linssen/ed.ultimate_package/zipball/master"
+		"ultimate_package": "https://github.com/linssen/ed.ultimate_package/zipball/master"
 	}
 }

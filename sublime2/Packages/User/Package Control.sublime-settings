@@ -1,8 +1,16 @@
 {
 	"installed_packages":
 	[
+		"AdvancedNewFile",
+		"CoffeeLint",
 		"Git",
 		"GitGutter",
-		"Nettuts+ Fetch"
+		"Markdown Preview",
+		"Nettuts+ Fetch",
+		"Package Control",
+		"Sass",
+		"SideBarEnhancements",
+		"SublimeBlockCursor",
+		"Theme - Soda"
 	]
 }
