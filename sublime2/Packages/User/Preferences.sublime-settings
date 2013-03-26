@@ -13,7 +13,7 @@
 	[
 		80
 	],
-	"folder_exclude_patterns": ["env"],
+	"folder_exclude_patterns": ["env", ".git"],
 	"file_exclude_patterns": ["*.sublime-project", "*.sublime-workspace"],
 	"theme": "Soda Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
