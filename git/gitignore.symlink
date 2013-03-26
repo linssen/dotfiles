@@ -2,3 +2,4 @@
 *.swp
 *.pyc
 .sass-cache
+/sublime2/Packages/User/Package Control.last-run
