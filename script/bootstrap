@@ -50,9 +50,9 @@ install_sublime () {
         source="$DOTFILES_ROOT/sublime2"
 
         # TODO recurse or wildcard or something, for goodness sakes
-        rm -rf "$dest/\Packages"
-        rm -rf "$dest/\Installed Packages"
-        rm -rf "$dest/\Pristine Packages"
+        rm -rf "$dest/Packages"
+        rm -rf "$dest/Installed Packages"
+        rm -rf "$dest/Pristine Packages"
 
         link_files "$source/Packages" "$dest/Packages"
         link_files "$source/Installed Packages" "$dest/Installed Packages"
