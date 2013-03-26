@@ -1,0 +1,4 @@
+[
+    { "keys": ["ctrl+h"], "command": "prev_view" },
+    { "keys": ["ctrl+l"], "command": "next_view" }
+]
