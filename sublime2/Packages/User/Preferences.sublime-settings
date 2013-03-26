@@ -1,5 +1,15 @@
 {
 	"drawWhiteSpace": true,
+	"file_exclude_patterns":
+	[
+		"*.sublime-project",
+		"*.sublime-workspace"
+	],
+	"folder_exclude_patterns":
+	[
+		"env",
+		".git"
+	],
 	"font_size": 12.0,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
@@ -13,8 +23,6 @@
 	[
 		80
 	],
-	"folder_exclude_patterns": ["env", ".git"],
-	"file_exclude_patterns": ["*.sublime-project", "*.sublime-workspace"],
 	"theme": "Soda Dark.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
