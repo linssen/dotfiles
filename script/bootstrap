@@ -32,30 +32,39 @@ link_files () {
 }
 
 install_sublime () {
-    info 'replacing sublime packages with symlinks'
 
-    user "Replace existing Sublime packages with these ones? [y]yes, [n]o"
-    read -n 1 action
+    sublime2_dir="$HOME/Library/Application Support/Sublime Text 2"
 
-    case "$action" in
-        y )
-            overwrite=true;;
-        * )
-            overwrite=false;;
-    esac
+    if [ -d "$sublime2_dir" ]; then
 
-    if [ "$overwrite" == "true" ]
-    then
-        dest="$HOME/Library/Application Support/Sublime Text 2"
-        source="$DOTFILES_ROOT/sublime2"
+        info 'replacing sublime packages with symlinks'
 
-        rm -rf "$dest/Packages" "$dest/Installed Packages" "$dest/Pristine Packages"
+        user "Replace existing Sublime packages with these ones? [y]es, [n]o"
+        read -n 1 action
 
-        link_files "$source/Packages" "$dest/Packages"
-        link_files "$source/Installed Packages" "$dest/Installed Packages"
-        link_files "$source/Pristine Packages" "$dest/Pristine Packages"
+        case "$action" in
+            y )
+                overwrite=true;;
+            * )
+                overwrite=false;;
+        esac
+
+        if [ "$overwrite" == "true" ]
+        then
+
+            source="$DOTFILES_ROOT/sublime2"
+
+            rm -rf "$sublime2_dir/Packages" "$sublime2_dir/Installed Packages" "$sublime2_dir/Pristine Packages"
+
+            link_files "$source/Packages" "$sublime2_dir/Packages"
+            link_files "$source/Installed Packages" "$sublime2_dir/Installed Packages"
+            link_files "$source/Pristine Packages" "$sublime2_dir/Pristine Packages"
+        else
+            success "didn't overwrite sublime packages"
+        fi
+
     else
-        success "didn't overwrite sublime packages"
+        info "not installing Sublime because it's not there"
     fi
 }
 
