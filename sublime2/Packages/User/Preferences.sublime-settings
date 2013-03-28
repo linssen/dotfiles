@@ -3,7 +3,9 @@
 	"file_exclude_patterns":
 	[
 		"*.sublime-project",
-		"*.sublime-workspace"
+		"*.sublime-workspace",
+		"*.pyc",
+		"*.DS_Store"
 	],
 	"folder_exclude_patterns":
 	[
