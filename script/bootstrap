@@ -53,14 +53,18 @@ install_sublime () {
         then
 
             source="$DOTFILES_ROOT/sublime2"
-
             rm -rf "$sublime2_dir/Packages" "$sublime2_dir/Installed Packages" "$sublime2_dir/Pristine Packages"
-
             link_files "$source/Packages" "$sublime2_dir/Packages"
             link_files "$source/Installed Packages" "$sublime2_dir/Installed Packages"
             link_files "$source/Pristine Packages" "$sublime2_dir/Pristine Packages"
         else
             success "didn't overwrite sublime packages"
+        fi
+
+        subl_cli="/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
+        if   [ -f "$subl_cli" ]; then
+            info "linking subl cli binary"
+            link_files "$subl_cli" "$HOME/.dotfiles/sublime2/bin/subl"
         fi
 
     else
