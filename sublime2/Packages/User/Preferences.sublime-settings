@@ -13,7 +13,7 @@
 		"env",
 		".git"
 	],
-	"font_size": 12.0,
+	"font_size": 13.0,
 	"highlight_modified_tabs": true,
 	"hot_exit": false,
 	"ignore_inodes": true,
