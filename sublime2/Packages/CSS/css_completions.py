@@ -187,7 +187,7 @@ class CSSCompletions(sublime_plugin.EventListener):
 
             for p in self.props:
                 if add_colon:
-                    l.append((p, p + ": "))
+                    l.append((p, p + ":"))
                 else:
                     l.append((p, p))
 
