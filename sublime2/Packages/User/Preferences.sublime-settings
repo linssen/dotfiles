@@ -5,6 +5,7 @@
 		"*.sublime-project",
 		"*.sublime-workspace",
 		"*.pyc",
+		"*.scssc",
 		"*.DS_Store"
 	],
 	"folder_exclude_patterns":
