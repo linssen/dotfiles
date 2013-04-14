@@ -3,9 +3,11 @@
 	[
 		"AdvancedNewFile",
 		"CoffeeLint",
+		"CoffeeScript",
 		"Emmet",
 		"Git",
 		"GitGutter",
+		"Handlebars",
 		"Markdown Preview",
 		"Nettuts+ Fetch",
 		"Origami",
