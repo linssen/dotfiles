@@ -3,7 +3,10 @@
 	{
 		"backbone": "http://backbonejs.org/backbone.js",
 		"d3": "https://raw.github.com/mbostock/d3/master/d3.js",
+		"handlebars": "https://raw.github.com/wycats/handlebars.js/1.0.0-rc.3/dist/handlebars.js",
 		"jquery": "http://code.jquery.com/jquery.js",
+		"normalize": "http://necolas.github.com/normalize.css/2.1.0/normalize.css",
+		"reset.css": "http://yui.yahooapis.com/3.9.1/build/cssreset/cssreset-min.css",
 		"underscore": "http://underscorejs.org/underscore.js"
 	},
 	"packages":
