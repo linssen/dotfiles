@@ -1,8 +1,10 @@
 <snippet>
-  <content><![CDATA[{{#if ${1}}}
+  <content><![CDATA[{{#if ${2}}}
+${1}
+{{else}}
 ${0}
 {{/if}}]]></content>
-  <tabTrigger>if</tabTrigger>
+  <tabTrigger>ifel</tabTrigger>
   <scope>text.html.handlebars,text.html.basic source.js.embedded.html, text.html.twig source.js.embedded.html</scope>
-  <description>if(handlebars)</description>
+  <description>if else(handlebars)</description>
 </snippet>
