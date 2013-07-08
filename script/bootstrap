@@ -33,9 +33,9 @@ link_files () {
 
 install_sublime () {
 
-    sublime2_dir="$HOME/Library/Application Support/Sublime Text 2"
+    sublime_dir="$HOME/Library/Application Support/Sublime Text 3"
 
-    if [ -d "$sublime2_dir" ]; then
+    if [ -d "$sublime_dir" ]; then
 
         info 'replacing sublime packages with symlinks'
 
@@ -52,19 +52,18 @@ install_sublime () {
         if [ "$overwrite" == "true" ]
         then
 
-            source="$DOTFILES_ROOT/sublime2"
-            rm -rf "$sublime2_dir/Packages" "$sublime2_dir/Installed Packages" "$sublime2_dir/Pristine Packages"
-            link_files "$source/Packages" "$sublime2_dir/Packages"
-            link_files "$source/Installed Packages" "$sublime2_dir/Installed Packages"
-            link_files "$source/Pristine Packages" "$sublime2_dir/Pristine Packages"
+            source="$DOTFILES_ROOT/sublime"
+            rm -rf "$sublime_dir/Packages" "$sublime_dir/Installed Packages"
+            link_files "$source/Packages" "$sublime_dir/Packages"
+            link_files "$source/Installed Packages" "$sublime_dir/Installed Packages"
         else
             success "didn't overwrite sublime packages"
         fi
 
-        subl_cli="/Applications/Sublime Text 2.app/Contents/SharedSupport/bin/subl"
+        subl_cli="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
         if   [ -f "$subl_cli" ]; then
             info "linking subl cli binary"
-            link_files "$subl_cli" "$HOME/.dotfiles/sublime2/bin/subl"
+            link_files "$subl_cli" "$HOME/.dotfiles/sublime/bin/subl"
         fi
 
     else

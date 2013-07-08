@@ -33,3 +33,5 @@
 	trustExitCode = true
 [mergetool]
 	prompt = false
+[push]
+	default = upstream
