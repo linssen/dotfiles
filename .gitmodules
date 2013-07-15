@@ -34,3 +34,6 @@
 [submodule "vim/vim.symlink/bundle/gitgutter.vim"]
 	path = vim/vim.symlink/bundle/gitgutter.vim
 	url = git://github.com/airblade/vim-gitgutter.git
+[submodule "powerline/powerline.symlink"]
+	path = powerline/powerline.symlink
+	url = git://github.com/Lokaltog/powerline
