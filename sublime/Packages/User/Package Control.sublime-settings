@@ -1,9 +1,16 @@
 {
 	"installed_packages":
 	[
+		"AAAPackageDev",
+		"AdvancedNewFile",
 		"Emmet",
+		"Git",
 		"GitGutter",
+		"INI",
+		"JSONLint",
+		"Markdown Preview",
 		"Package Control",
+		"SCSS",
 		"SideBarEnhancements",
 		"SublimeLinter",
 		"Theme - Soda"
