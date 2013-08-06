@@ -63,6 +63,7 @@ install_sublime () {
         subl_cli="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
         if   [ -f "$subl_cli" ]; then
             info "linking subl cli binary"
+            mkdir -p "$HOME/.dotfiles/sublime/bin"
             link_files "$subl_cli" "$HOME/.dotfiles/sublime/bin/subl"
         fi
 
