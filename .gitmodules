@@ -37,3 +37,6 @@
 [submodule "powerline/powerline.symlink"]
 	path = powerline/powerline.symlink
 	url = git://github.com/Lokaltog/powerline
+[submodule "sublime/Packages/Package Control"]
+	path = sublime/Packages/Package Control
+	url = https://github.com/wbond/sublime_package_control.git
