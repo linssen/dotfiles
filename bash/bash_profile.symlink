@@ -12,4 +12,9 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
+# Tmux
+if [[ ! $TERM =~ screen ]]; then
+    exec tmux
+fi
+
 export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$PATH
