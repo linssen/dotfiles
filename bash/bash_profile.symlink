@@ -5,16 +5,15 @@ node_packages=/usr/local/share/npm/bin
 rvm=$HOME/.rvm/bin
 sublime=$HOME/.dotfiles/sublime/bin
 
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+export PIP_RESPECT_VIRTUALENV=true
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 # Bash completion
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
-fi
-
-# Tmux
-if [[ ! $TERM =~ screen ]]; then
-    exec tmux
 fi
 
 export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$PATH
