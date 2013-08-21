@@ -3,6 +3,8 @@
 set -g prefix C-a
 bind C-a send-prefix
 
+# Clipboard
+set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # Panes
 # ---------------------------------------------------------------------
