@@ -43,3 +43,6 @@
 [submodule "sublime/Packages/SublimeLinter"]
 	path = sublime/Packages/SublimeLinter
 	url = https://github.com/SublimeLinter/SublimeLinter.git
+[submodule "sublime/Packages/LiveReload"]
+	path = sublime/Packages/LiveReload
+	url = https://github.com/dz0ny/LiveReload-sublimetext2.git
