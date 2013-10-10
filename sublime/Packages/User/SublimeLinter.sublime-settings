@@ -27,6 +27,8 @@
 
     "jslint_options": {
         "nomen": true
-    }
+    },
+
+    "sublimelinter_delay": 0.5
 
 }
