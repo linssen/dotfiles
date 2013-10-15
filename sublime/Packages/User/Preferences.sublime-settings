@@ -1,5 +1,6 @@
 {
 	"drawWhiteSpace": true,
+	"scroll_past_end": true,
 	"file_exclude_patterns":
 	[
 		"*.sublime-project",
