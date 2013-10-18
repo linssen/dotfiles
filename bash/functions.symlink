@@ -20,5 +20,6 @@ function loip() {
     else
       IP="Couldn't get IP address"
     fi
-    echo $IP
+    echo -n $IP | pbcopy
+    echo "IP $IP copied to clipboard"
 }
