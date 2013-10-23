@@ -46,3 +46,6 @@
 [submodule "sublime/Packages/LiveReload"]
 	path = sublime/Packages/LiveReload
 	url = https://github.com/dz0ny/LiveReload-sublimetext2.git
+[submodule "grunt/grunt-init.symlink/zepackage"]
+	path = grunt/grunt-init.symlink/zepackage
+	url = git@github.com:linssen/grunt-init-zepackage.git
