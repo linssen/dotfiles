@@ -48,4 +48,4 @@
 	url = https://github.com/dz0ny/LiveReload-sublimetext2.git
 [submodule "grunt/grunt-init.symlink/zepackage"]
 	path = grunt/grunt-init.symlink/zepackage
-	url = git@github.com:linssen/grunt-init-zepackage.git
+	url = https://github.com/linssen/grunt-init-zepackage.git
