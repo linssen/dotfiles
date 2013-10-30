@@ -1,0 +1,14 @@
+{
+	"files":
+	{
+		"angular": "https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js",
+		"backbone": "http://backbonejs.org/backbone.js",
+		"jquery": "http://code.jquery.com/jquery.js",
+		"underscore": "http://underscorejs.org/underscore.js"
+	},
+	"packages":
+	{
+		"bootstrap": "https://github.com/twbs/bootstrap/releases/tag/v3.0.0",
+		"html5-boilerplate": "https://github.com/h5bp/html5-boilerplate/archive/v4.3.0.zip"
+	}
+}
