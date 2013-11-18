@@ -3,9 +3,9 @@
 	{
 		"angular": "https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js",
 		"backbone": "http://backbonejs.org/backbone.js",
+		"d3": "http://d3js.org/d3.v3.js",
 		"jquery": "http://code.jquery.com/jquery.js",
-		"underscore": "http://underscorejs.org/underscore.js",
-		"d3": "http://d3js.org/d3.v3.js"
+		"underscore": "http://underscorejs.org/underscore.js"
 	},
 	"packages":
 	{
