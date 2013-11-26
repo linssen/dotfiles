@@ -1,6 +1,6 @@
 .DS_Store
 *.swp
-*.pyc
+*.py[co]
 .sass-cache
 *.sublime-project
 *.sublime-workspace
