@@ -11,7 +11,6 @@
 	"folder_exclude_patterns":
 	[
 		"env",
-		".git"
 	],
 	"font_face": "Monaco",
 	"font_size": 12.0,
