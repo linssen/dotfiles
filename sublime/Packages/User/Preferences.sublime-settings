@@ -10,7 +10,8 @@
 	],
 	"folder_exclude_patterns":
 	[
-		"env",
+		".sass-cache",
+		"env"
 	],
 	"font_face": "Monaco",
 	"font_size": 12.0,
