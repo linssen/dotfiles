@@ -10,6 +10,7 @@
     st = status
     lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit
     rs = reset --hard HEAD
+    pfo = pull --ff-only
 [core]
     excludesfile = /Users/wil/.gitignore
 [merge]
