@@ -25,8 +25,8 @@
 		"Vintage",
 		"SublimeBlockCursor"
 	],
-	"line_padding_bottom": -1,
-	"line_padding_top": -1,
+	"line_padding_bottom": 0,
+	"line_padding_top": 0,
 	"remember_open_files": false,
 	"rulers":
 	[
