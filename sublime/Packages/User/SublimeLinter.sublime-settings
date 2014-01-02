@@ -23,7 +23,7 @@
     */
     "sublimelinter_gutter_marks_theme": "bright",
 
-    "javascript_linter": "jslint",
+    "javascript_linter": "jshint",
 
     "jslint_options": {
         "nomen": true
