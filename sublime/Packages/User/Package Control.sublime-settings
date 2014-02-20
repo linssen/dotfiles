@@ -14,6 +14,7 @@
 		"SCSS",
 		"SideBarEnhancements",
 		"SublimeLinter",
+		"SublimeLinter-contrib-puppet",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-pep8",
