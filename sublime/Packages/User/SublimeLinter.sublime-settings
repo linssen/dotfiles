@@ -1,86 +1,55 @@
 {
-    /*
-        Selects the way the lines with errors or warnings are marked; "outline" draws
-        outline boxes around the lines, "fill" fills the lines with the outline color,
-        and "none" (default) disables all outline styles.
-    */
-    "sublimelinter_mark_style": "outline",
-
-    // If true, lines with errors or warnings will have a gutter mark.
-    "sublimelinter_gutter_marks": true,
-
-    "pep8": true,
-    "pep8_ignore": ["E501"],
-
-    // The set of annotation phrases to highlight
-    "annotations": ["TODO", "README", "FIXME"],
-
-    /*
-        Choose the theme for gutter marks; available built-in options are:
-        "alpha", "bright", "dark", "hard" and "simple"
-
-        Anything else will be treated as a path to a set of images.
-        For instance, setting the value to "../User/my-awesome-theme"
-        would cause SublimeLinter to look for the images:
-        "../User/my-awesome-theme-illegal.png",
-        "../User/my-awesome-theme-violation.png",
-        "../User/my-awesome-theme-warning.png"
-        These images should all be approximately 32x32px.
-    */
-    "sublimelinter_gutter_marks_theme": "bright",
-
-    "javascript_linter": "jshint",
-
-    "jslint_options": {
-        "evil": true,
-        "regexdash": true,
-        "browser": true,
-        "wsh": true,
-        "trailing": true,
-        "sub": true
-    },
-
-    "sublimelinter_delay": 0.5,
-
-        // CSSLint options:
-    // Each rule can have three values: error|warning|true|false
-    // false => rule is disabled.
-    // true => alias to 'error'
-    // All rules are enabled by default.
-    // Currently the only difference between warnings and errors is in the prefix of the message in the Sublime status bar.
-    "csslint_options":
-    {
-        "adjoining-classes": "warning",
-        "box-model": true,
-        "box-sizing": "warning",
-        "compatible-vendor-prefixes": "warning",
-        "display-property-grouping": true,
-        "duplicate-background-images": "warning",
-        "duplicate-properties": true,
-        "empty-rules": true,
-        "errors": true,
-        "fallback-colors": "warning",
-        "floats": "warning",
-        "font-faces": "warning",
-        "font-sizes": "warning",
-        "gradients": "warning",
-        "ids": "warning",
-        "import": "warning",
-        "important": "warning",
-        "known-properties": true,
-        "outline-none": "warning",
-        "overqualified-elements": "warning",
-        "qualified-headings": "warning",
-        "regex-selectors": "warning",
-        "rules-count": "warning",
-        "shorthand": "warning",
-        "star-property-hack": "warning",
-        "text-indent": "warning",
-        "underscore-property-hack": "warning",
-        "unique-headings": "warning",
-        "universal-selector": "warning",
-        "vendor-prefix": true,
-        "zero-units": "warning"
-    },
-
+    "user": {
+        "debug": false,
+        "delay": 0.25,
+        "error_color": "D02000",
+        "gutter_theme": "Packages/SublimeLinter/gutter-themes/Default/Default.gutter-theme",
+        "gutter_theme_excludes": [],
+        "lint_mode": "background",
+        "linters": {
+            "jshint": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
+            "json": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
+            },
+            "pep8": {
+                "@disable": false,
+                "args": [],
+                "excludes": [],
+                "ignore": "",
+                "max-line-length": null,
+                "select": ""
+            }
+        },
+        "mark_style": "outline",
+        "no_column_highlights_line": false,
+        "paths": {
+            "linux": [],
+            "osx": [],
+            "windows": []
+        },
+        "python_paths": {
+            "linux": [],
+            "osx": [],
+            "windows": []
+        },
+        "rc_search_limit": 3,
+        "shell_timeout": 10,
+        "show_errors_on_save": false,
+        "show_marks_in_minimap": true,
+        "syntax_map": {
+            "html (django)": "html",
+            "html (rails)": "html",
+            "html 5": "html",
+            "php": "html",
+            "python django": "python"
+        },
+        "warning_color": "DDB700",
+        "wrap_find": true
+    }
 }
