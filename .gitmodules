@@ -40,9 +40,6 @@
 [submodule "sublime/Packages/Package Control"]
 	path = sublime/Packages/Package Control
 	url = https://github.com/wbond/sublime_package_control.git
-[submodule "sublime/Packages/SublimeLinter"]
-	path = sublime/Packages/SublimeLinter
-	url = https://github.com/SublimeLinter/SublimeLinter.git
 [submodule "sublime/Packages/LiveReload"]
 	path = sublime/Packages/LiveReload
 	url = https://github.com/dz0ny/LiveReload-sublimetext2.git

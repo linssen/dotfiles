@@ -13,6 +13,10 @@
 		"Puppet",
 		"SCSS",
 		"SideBarEnhancements",
+		"SublimeLinter",
+		"SublimeLinter-jshint",
+		"SublimeLinter-json",
+		"SublimeLinter-pep8",
 		"Theme - Soda"
 	]
 }
