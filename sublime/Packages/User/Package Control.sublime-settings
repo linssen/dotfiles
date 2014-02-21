@@ -17,7 +17,7 @@
 		"SublimeLinter-contrib-puppet",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
-		"SublimeLinter-pep8",
+		"SublimeLinter-pyflakes",
 		"Theme - Soda"
 	]
 }

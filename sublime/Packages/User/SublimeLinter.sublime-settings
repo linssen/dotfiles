@@ -17,13 +17,10 @@
                 "args": [],
                 "excludes": []
             },
-            "pep8": {
+            "puppet": {
                 "@disable": false,
                 "args": [],
-                "excludes": [],
-                "ignore": "",
-                "max-line-length": null,
-                "select": ""
+                "excludes": []
             }
         },
         "mark_style": "outline",
