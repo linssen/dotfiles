@@ -21,9 +21,14 @@
                 "@disable": false,
                 "args": [],
                 "excludes": []
+            },
+            "pyflakes": {
+                "@disable": false,
+                "args": [],
+                "excludes": []
             }
         },
-        "mark_style": "outline",
+        "mark_style": "squiggly underline",
         "no_column_highlights_line": false,
         "paths": {
             "linux": [],
