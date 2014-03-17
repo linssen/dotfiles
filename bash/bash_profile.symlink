@@ -24,3 +24,4 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
 fi
 
 export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$PATH
+PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
