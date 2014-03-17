@@ -11,6 +11,7 @@ node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 rvm=$HOME/.rvm/bin
 sublime=$HOME/.dotfiles/sublime/bin
+powerline=$HOME/.powerline/scripts
 
 export WORKON_HOME=$HOME/.virtualenvs
 source /usr/local/bin/virtualenvwrapper.sh
@@ -23,5 +24,6 @@ if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
 
-export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$PATH
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
+
+export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$powerline:$PATH
