@@ -1,0 +1,30 @@
+{
+    "default_module": "powerline.segments.common",
+    "segment_data": {
+        "external_ip": {
+            "before": "ⓦ  "
+        },
+        "branch": {
+            "before": " "
+        }
+    },
+    "segments": {
+        "left": [
+            {
+                "name": "branch"
+            }
+        ],
+        "right": [
+            {
+                "name": "system_load",
+                "priority": 50
+            },
+            {
+                "name": "hostname"
+            },
+            {
+                "name": "external_ip"
+            }
+        ]
+    }
+}
