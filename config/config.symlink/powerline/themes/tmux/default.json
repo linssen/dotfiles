@@ -12,6 +12,12 @@
         "left": [
             {
                 "name": "branch"
+            },
+            {
+                "name": "cwd",
+                "args": {
+                    "dir_limit_depth": 3
+                }
             }
         ],
         "right": [
