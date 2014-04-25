@@ -15,17 +15,23 @@ function loip() {
     dongle3=$(ipconfig getifaddr en4)
     if [[ "$en" != "" ]]; then
       IP=$en
+      SOURCE="ethernet"
     elif [[ "$wifi" != "" ]]; then
       IP=$wifi
+      SOURCE="wifi"
     elif [[ "$dongle1" != "" ]]; then
       IP=$dongle1
-    elif [[ "$dongle"2 != "" ]]; then
+      SOURCE="dongle1"
+      echo "dongle"
+    elif [[ "$dongle2" != "" ]]; then
       IP=$dongle2
+      SOURCE="dongle"
     elif [[ "$dongle3" != "" ]]; then
       IP=$dongle3
+      SOURCE="dongle"
     else
       IP="Couldn't get IP address"
     fi
     echo -n $IP | pbcopy
-    echo "IP $IP copied to clipboard"
+    echo "IP $IP from $SOURCE copied to clipboard"
 }
