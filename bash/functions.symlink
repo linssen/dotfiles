@@ -10,13 +10,19 @@ function server() {
 function loip() {
     en=$(ipconfig getifaddr en0)
     wifi=$(ipconfig getifaddr en1)
-    dongle=$(ipconfig getifaddr en2)
+    dongle1=$(ipconfig getifaddr en2)
+    dongle2=$(ipconfig getifaddr en3)
+    dongle3=$(ipconfig getifaddr en4)
     if [[ "$en" != "" ]]; then
       IP=$en
     elif [[ "$wifi" != "" ]]; then
       IP=$wifi
-    elif [[ "$dongle" != "" ]]; then
-      IP=$dongle
+    elif [[ "$dongle1" != "" ]]; then
+      IP=$dongle1
+    elif [[ "$dongle"2 != "" ]]; then
+      IP=$dongle2
+    elif [[ "$dongle3" != "" ]]; then
+      IP=$dongle3
     else
       IP="Couldn't get IP address"
     fi
