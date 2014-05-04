@@ -9,7 +9,7 @@ unset file
 homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
-rvm=$HOME/.rvm/bin
+rvm=$HOME/.rvm/scripts/rvm
 sublime=$HOME/.dotfiles/sublime/bin
 powerline=$HOME/.powerline/scripts
 
