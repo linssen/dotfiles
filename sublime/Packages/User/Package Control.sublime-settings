@@ -19,6 +19,7 @@
 		"SublimeCodeIntel",
 		"SublimeLinter",
 		"SublimeLinter-contrib-puppet",
+		"SublimeLinter-csslint",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-pyflakes",
