@@ -28,12 +28,15 @@ if exists('g:loaded_syntastic_tex_chktex_checker')
 endif
 let g:loaded_syntastic_tex_chktex_checker = 1
 
+let s:save_cpo = &cpo
+set cpo&vim
+
 if !exists('g:syntastic_tex_chktex_showmsgs')
     let g:syntastic_tex_chktex_showmsgs = 1
 endif
 
 function! SyntaxCheckers_tex_chktex_GetLocList() dict
-    let makeprg = self.makeprgBuild({ 'post_args': '-q -v1' })
+    let makeprg = self.makeprgBuild({ 'args_after': '-q -v1' })
 
     let errorformat =
         \ '%EError %n in %f line %l: %m,' .
@@ -42,13 +45,21 @@ function! SyntaxCheckers_tex_chktex_GetLocList() dict
         \ '%Z%p^,' .
         \ '%-G%.%#'
 
-    return SyntasticMake({
+    let loclist =  SyntasticMake({
         \ 'makeprg': makeprg,
         \ 'errorformat': errorformat,
-        \ 'subtype': 'Style',
-        \ 'postprocess': ['sort'] })
+        \ 'subtype': 'Style' })
+
+    call self.setWantSort(1)
+
+    return loclist
 endfunction
 
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'tex',
     \ 'name': 'chktex'})
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+" vim: set et sts=4 sw=4:

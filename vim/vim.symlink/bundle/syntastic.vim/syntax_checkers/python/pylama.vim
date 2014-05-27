@@ -9,17 +9,23 @@
 "             See http://sam.zoy.org/wtfpl/COPYING for more details.
 "
 "============================================================================
+
 if exists('g:loaded_syntastic_python_pylama_checker')
     finish
 endif
 let g:loaded_syntastic_python_pylama_checker = 1
 
-function! SyntaxCheckers_python_pylama_GetHighlightRegex(i)
-    return SyntaxCheckers_python_pyflakes_GetHighlightRegex(a:i)
+let s:save_cpo = &cpo
+set cpo&vim
+
+function! SyntaxCheckers_python_pylama_GetHighlightRegex(item)
+    return SyntaxCheckers_python_pyflakes_GetHighlightRegex(a:item)
 endfunction
 
 function! SyntaxCheckers_python_pylama_GetLocList() dict
-    let makeprg = self.makeprgBuild({ 'post_args': '-f pep8' })
+    let makeprg = self.makeprgBuild({
+        \ 'exe_before': (syntastic#util#isRunningWindows() ? '' : 'TERM=dumb'),
+        \ 'args_after': '-f pep8' })
 
     " TODO: "WARNING:pylama:..." messages are probably a logging bug
     let errorformat =
@@ -28,8 +34,7 @@ function! SyntaxCheckers_python_pylama_GetLocList() dict
 
     let loclist = SyntasticMake({
         \ 'makeprg': makeprg,
-        \ 'errorformat': errorformat,
-        \ 'postprocess': ['sort'] })
+        \ 'errorformat': errorformat })
 
     " adjust for weirdness in each checker
     for e in loclist
@@ -49,6 +54,8 @@ function! SyntaxCheckers_python_pylama_GetLocList() dict
         endif
     endfor
 
+    call self.setWantSort(1)
+
     return loclist
 endfunction
 
@@ -57,3 +64,8 @@ runtime! syntax_checkers/python/pyflakes.vim
 call g:SyntasticRegistry.CreateAndRegisterChecker({
     \ 'filetype': 'python',
     \ 'name': 'pylama' })
+
+let &cpo = s:save_cpo
+unlet s:save_cpo
+
+" vim: set et sts=4 sw=4:
