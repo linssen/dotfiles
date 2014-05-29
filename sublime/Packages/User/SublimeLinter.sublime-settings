@@ -7,6 +7,24 @@
         "gutter_theme_excludes": [],
         "lint_mode": "background",
         "linters": {
+            "csslint": {
+                "@disable": false,
+                "args": [],
+                "errors": "",
+                "excludes": [],
+                "ignore": "",
+                "warnings": ""
+            },
+            "flake8": {
+                "@disable": false,
+                "args": [],
+                "builtins": "",
+                "excludes": [],
+                "ignore": "E501,E302",
+                "max-complexity": -1,
+                "max-line-length": null,
+                "select": ""
+            },
             "jshint": {
                 "@disable": false,
                 "args": [],
@@ -15,7 +33,8 @@
             "json": {
                 "@disable": false,
                 "args": [],
-                "excludes": []
+                "excludes": [],
+                "strict": true
             },
             "puppet": {
                 "@disable": false,
@@ -23,9 +42,16 @@
                 "excludes": []
             },
             "pyflakes": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "excludes": []
+            },
+            "scss": {
+                "@disable": false,
+                "args": [],
+                "exclude-linter": "",
+                "excludes": [],
+                "include-linter": ""
             }
         },
         "mark_style": "squiggly underline",

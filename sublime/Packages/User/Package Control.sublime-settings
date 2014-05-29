@@ -21,6 +21,7 @@
 		"SublimeLinter-contrib-puppet",
 		"SublimeLinter-contrib-scss-lint",
 		"SublimeLinter-csslint",
+		"SublimeLinter-flake8",
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-pyflakes",
