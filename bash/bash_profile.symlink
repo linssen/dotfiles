@@ -23,7 +23,14 @@ export PIP_RESPECT_VIRTUALENV=true
 if [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
-export PS1="[\[\033[32m\]\w]\[\033[0m\]\$(__git_ps1)\n\[\033[1;36m\]\u\[\033[32m\]$ \[\033[0m\]"
+
+green="\[\033[01;32m\]"
+cyan="\[\033[01;36m\]"
+yellow="\[\033[01;33m\]"
+lightgrey="\[\033[00;37m\]"
+darkgrey="\[\033[00;30m\]"
+NC="\[\033[00m\]"
+PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}->${NC} "
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
