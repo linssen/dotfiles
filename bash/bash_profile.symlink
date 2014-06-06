@@ -30,7 +30,7 @@ yellow="\[\033[01;33m\]"
 lightgrey="\[\033[00;37m\]"
 darkgrey="\[\033[00;30m\]"
 NC="\[\033[00m\]"
-PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}->${NC} "
+PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}\342\207\242${NC} "
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
