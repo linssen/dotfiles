@@ -23,8 +23,8 @@
 	"ignore_inodes": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"SublimeBlockCursor",
+		"Markdown",
 		"Vintage"
 	],
 	"line_padding_bottom": 0,
