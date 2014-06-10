@@ -37,3 +37,11 @@ set -g pane-active-border-bg default
 # Powerline
 # ---------------------------------------------------------------------
 source ~/.powerline/powerline/bindings/tmux/powerline.conf
+
+# Mouse
+# ---------------------------------------------------------------------
+set -g mode-mouse on
+set-option -g mouse-select-pane on
+set-option -g mouse-resize-pane on
+set-option -g mouse-utf8 on
+set-option -g mouse-select-window on
