@@ -14,11 +14,13 @@
 from functools import lru_cache
 from glob import glob
 import json
+import locale
 from numbers import Number
 import os
 import re
 import shutil
 from string import Template
+import stat
 import sublime
 import subprocess
 import sys
@@ -502,6 +504,7 @@ def climb(start_dir, limit=None):
             limit -= 1
 
 
+@lru_cache(maxsize=None)
 def find_file(start_dir, name, parent=False, limit=None, aux_dirs=[]):
     """
     Find the given file by searching up the file hierarchy from start_dir.
@@ -749,8 +752,9 @@ def which(cmd, module=None):
     Return the full path to the given command, or None if not found.
 
     If cmd is in the form [script]@python[version], find_python is
-    called to locate the appropriate version of python. The result
-    is a tuple of the full python path and the full path to the script
+    called to locate the appropriate version of python. If an executable
+    version of the script can be found, its path is returned. Otherwise
+    the result is a tuple of the full python path and the full path to the script
     (or None if there is no script).
 
     """
@@ -760,7 +764,19 @@ def which(cmd, module=None):
     if match:
         args = match.groupdict()
         args['module'] = module
-        return find_python(**args)[0:2]
+        path = find_python(**args)[0:2]
+
+        # If a script is requested and an executable path is returned
+        # with no script path, just use the executable.
+        if (
+            path is not None and
+            path[0] is not None and
+            path[1] is None and
+            args['script']  # for the case where there is no script in cmd
+        ):
+            return path[0]
+        else:
+            return path
     else:
         return find_executable(cmd)
 
@@ -881,6 +897,9 @@ def find_python(version=None, script=None, module=None):
 
                 if script_path is None:
                     path = None
+                elif script_path.endswith('.exe'):
+                    path = script_path
+                    script_path = None
         else:
             path = script_path = None
 
@@ -984,13 +1003,19 @@ def find_python_script(python_path, script):
     if sublime.platform() in ('osx', 'linux'):
         return which(script)
     else:
-        # On Windows, scripts are .py files in <python directory>/Scripts
-        script_path = os.path.join(os.path.dirname(python_path), 'Scripts', script + '-script.py')
+        # On Windows, scripts may be .exe files or .py files in <python directory>/Scripts
+        scripts_path = os.path.join(os.path.dirname(python_path), 'Scripts')
+        script_path = os.path.join(scripts_path, script + '.exe')
 
         if os.path.exists(script_path):
             return script_path
-        else:
-            return None
+
+        script_path = os.path.join(scripts_path, script + '-script.py')
+
+        if os.path.exists(script_path):
+            return script_path
+
+        return None
 
 
 @lru_cache(maxsize=None)
@@ -1076,12 +1101,27 @@ def get_subl_executable_path():
 
 # popen utils
 
+def decode(bytes):
+    """
+    Decode and return a byte string using utf8, falling back to system's encoding if that fails.
+
+    So far we only have to do this because javac is so utterly hopeless it uses CP1252
+    for its output on Windows instead of UTF8, even if the input encoding is specified as UTF8.
+    Brilliant! But then what else would you expect from Oracle?
+
+    """
+    if not bytes:
+        return ''
+
+    try:
+        return bytes.decode('utf8')
+    except UnicodeError:
+        return bytes.decode(locale.getpreferredencoding(), errors='replace')
+
+
 def combine_output(out, sep=''):
     """Return stdout and/or stderr combined into a string, stripped of ANSI colors."""
-    output = sep.join((
-        (out[0].decode('utf8') or '') if out[0] else '',
-        (out[1].decode('utf8') or '') if out[1] else '',
-    ))
+    output = sep.join((decode(out[0]), decode(out[1])))
 
     return ANSI_COLOR_RE.sub('', output)
 
@@ -1138,6 +1178,11 @@ def create_tempdir():
         shutil.rmtree(tempdir)
 
     os.mkdir(tempdir)
+
+    # Make sure the directory can be removed by anyone in case the user
+    # runs ST later as another user.
+    os.chmod(tempdir, stat.S_IRWXU | stat.S_IRWXG | stat.S_IRWXO)
+
     from . import persist
     persist.debug('temp directory:', tempdir)
 
