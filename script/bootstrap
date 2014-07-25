@@ -53,18 +53,20 @@ install_sublime () {
         then
 
             source="$DOTFILES_ROOT/sublime"
+            subl_cli="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
+
             rm -rf "$sublime_dir/Packages" "$sublime_dir/Installed Packages"
             link_files "$source/Packages" "$sublime_dir/Packages"
             link_files "$source/Installed Packages" "$sublime_dir/Installed Packages"
+
+            if   [ -f "$subl_cli" ]; then
+                info "linking subl cli binary"
+                rm -rf "$HOME/.dotfiles/sublime/bin"
+                mkdir -p "$HOME/.dotfiles/sublime/bin"
+                link_files "$subl_cli" "$HOME/.dotfiles/sublime/bin/subl"
+            fi
         else
             success "didn't overwrite sublime packages"
-        fi
-
-        subl_cli="/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl"
-        if   [ -f "$subl_cli" ]; then
-            info "linking subl cli binary"
-            mkdir -p "$HOME/.dotfiles/sublime/bin"
-            link_files "$subl_cli" "$HOME/.dotfiles/sublime/bin/subl"
         fi
 
     else
