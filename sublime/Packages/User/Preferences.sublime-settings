@@ -36,6 +36,20 @@
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
+	"paths":
+	{
+		"osx":
+		[
+			"/usr/local/bin"
+		]
+	},
+	"python_paths":
+	{
+		"osx":
+		[
+			"/usr/local/bin"
+		]
+	},
 	"remember_open_files": false,
 	"rulers":
 	[
