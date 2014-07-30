@@ -1,16 +1,12 @@
 {
 	"installed_packages":
 	[
-		"AAAPackageDev",
 		"AdvancedNewFile",
-		"Better CoffeeScript",
-		"DashDoc",
 		"Emmet",
 		"Git",
 		"GitGutter",
 		"INI",
 		"Liquid",
-		"Markdown Preview",
 		"MarkdownEditing",
 		"Origami",
 		"Package Control",

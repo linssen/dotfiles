@@ -24,15 +24,7 @@
 	"ignored_packages":
 	[
 		"Vintage",
-		"SublimeBlockCursor",
-		"Markdown",
-		"Better CoffeeScript",
-		"DashDoc",
-		"Git",
-		"Markdown Preview",
-		"SideBarEnhancements",
-		"SublimeLinter",
-		"SublimeLinter-flake8"
+		"SublimeBlockCursor"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
