@@ -10,7 +10,7 @@ homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 rvm=$HOME/.rvm/scripts/rvm
-sublime=$HOME/.dotfiles/sublime/bin
+sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
 powerline=$HOME/.powerline/scripts
 
 export WORKON_HOME=$HOME/.virtualenvs
@@ -35,3 +35,7 @@ PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}\3
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
 export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$powerline:$PATH
+
+if [ -d "$sublime" ]; then
+    export PATH=$sublime:$PATH
+fi
