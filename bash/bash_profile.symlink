@@ -10,7 +10,7 @@ homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 rvm=$HOME/.rvm/scripts/rvm
-sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin/"
+sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 powerline=$HOME/.powerline/scripts
 
 export WORKON_HOME=$HOME/.virtualenvs
