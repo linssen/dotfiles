@@ -16,7 +16,7 @@
                 "warnings": ""
             },
             "flake8": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "builtins": "",
                 "excludes": [],
@@ -42,7 +42,7 @@
                 "excludes": []
             },
             "pyflakes": {
-                "@disable": true,
+                "@disable": false,
                 "args": [],
                 "excludes": []
             },
