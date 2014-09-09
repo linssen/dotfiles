@@ -24,6 +24,7 @@
 	"ignored_packages":
 	[
 		"Markdown",
+		"AdvancedNewFile",
 		"SublimeBlockCursor",
 		"Vintage"
 	],
