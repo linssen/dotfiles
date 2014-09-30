@@ -8,8 +8,8 @@ set-option -g default-command "reattach-to-user-namespace -l $SHELL"
 
 # Panes
 # ---------------------------------------------------------------------
-bind | split-window -h
-bind - split-window -v
+bind | split-window -h -c "#{pane_current_path}"
+bind - split-window -v -c "#{pane_current_path}"
 
 # Movement
 bind -r h select-pane -L
