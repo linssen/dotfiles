@@ -2,6 +2,7 @@
 	"installed_packages":
 	[
 		"AdvancedNewFile",
+		"DashDoc",
 		"Emmet",
 		"Git",
 		"GitGutter",
