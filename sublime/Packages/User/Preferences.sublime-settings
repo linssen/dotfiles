@@ -23,8 +23,8 @@
 	"ignore_inodes": true,
 	"ignored_packages":
 	[
-		"Markdown",
 		"AdvancedNewFile",
+		"Markdown",
 		"SublimeBlockCursor",
 		"Vintage"
 	],
