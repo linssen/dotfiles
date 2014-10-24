@@ -16,14 +16,15 @@
                 "warnings": ""
             },
             "flake8": {
-                "@disable": true,
+                "@disable": false,
                 "args": [],
                 "builtins": "",
                 "excludes": [],
                 "ignore": "E501,E302",
+                "jobs": "1",
                 "max-complexity": -1,
                 "max-line-length": null,
-                "select": ""
+                "select": "F401,F402,F403,F404,F811,F812,F821,F822,F823,F831,F841"
             },
             "jshint": {
                 "@disable": false,
@@ -42,7 +43,7 @@
                 "excludes": []
             },
             "pyflakes": {
-                "@disable": false,
+                "@disable": true,
                 "args": [],
                 "excludes": []
             },
