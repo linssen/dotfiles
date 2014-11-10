@@ -23,10 +23,9 @@
 	"ignore_inodes": true,
 	"ignored_packages":
 	[
-		"AdvancedNewFile",
+		"Vintage",
 		"Markdown",
-		"SublimeBlockCursor",
-		"Vintage"
+		"SublimeBlockCursor"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
