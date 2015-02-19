@@ -140,11 +140,25 @@ class PHPTreeEvaluator(TreeEvaluator):
 
     # Calltips with this expression value are ignored. See bug:
     # http://bugs.activestate.com/show_bug.cgi?id=61497
-    php_ignored_calltip_expressions = ("if", "elseif",
-                                       "for", "foreach",
-                                       "while",
-                                       "switch",
-                                       )
+    php_ignored_calltip_expressions = (
+        "if",
+        "elseif",
+        "for",
+        "foreach",
+        "while",
+        "switch",
+        "array",
+        "list",
+        "die",
+        "exit",
+        "header",
+        "require",
+        "require_once",
+        "echo",
+        "var_dump",
+        "print_r",
+        "var_export",
+    )
 
     php_magic_global_method_cplns = [("function", name) for name in
                                      sorted(php_magic_global_method_data.keys())]
@@ -222,6 +236,8 @@ class PHPTreeEvaluator(TreeEvaluator):
         elif trg.type == "classes":
             return self._classes_from_scope(None, start_scope) + \
                 self._imported_namespaces_from_scope(None, start_scope)
+        elif trg.type == "use-global-namespaces":
+            return self._namespaces_from_scope(None, start_scope)
         elif trg.type == "use":
             # When inside of a trait or a class - return trait completions, else
             # look for namespace completions.
@@ -259,12 +275,11 @@ class PHPTreeEvaluator(TreeEvaluator):
             else:
                 # Return global magic methods.
                 return self.php_magic_global_method_cplns
-        elif trg.type == "namespace-members" or \
-                trg.type == "use-namespace":
+        elif trg.type in ["namespace-members", "use-namespace", "namespace-members-nmspc-only"]:
             # Find the completions:
             cplns = []
             expr = self.expr
-            if trg.type == "use-namespace" and expr and not expr.startswith("\\"):
+            if trg.type  in ["use-namespace", "namespace-members-nmspc-only"] and expr and not expr.startswith("\\"):
                 # Importing a namespace, uses a FQN name - bug 88736.
                 expr = "\\" + expr
             fqn = self._fqn_for_expression(expr, start_scope)
@@ -274,6 +289,8 @@ class PHPTreeEvaluator(TreeEvaluator):
                 # self.log("hits: %r", hits)
                 cplns = list(self._members_from_hits(hits))
                 # self.log("cplns: %r", cplns)
+                if trg.type == "namespace-members-nmspc-only":
+                    cplns = [i for i in cplns if i[0] == "namespace"]
             # Return additional sub-namespaces that start with this prefix.
             if hits and hits[0][0] is not None:
                 # We hit a namespace, return additional namespaces that
@@ -765,6 +782,7 @@ class PHPTreeEvaluator(TreeEvaluator):
                     # Static variables use the '$' prefix, constants do not.
                     if "static" in attributes:
                         name_prefix = '$'
+                        child.tag = "static property"
                     elif child.get("ilk") != "constant":
                         continue
                 elif "static" in attributes:

@@ -179,10 +179,10 @@ class HTMLTreeBuilder(ElementTree.TreeBuilder):
                     content = v
             if http_equiv == "content-type" and content:
                 # use email to parse the http header
-                header = email.Message(
+                header = email.message.Message(
                     io.StringIO("%s: %s\n\n" % (http_equiv, content))
                 )
-                encoding = header.getparam("charset")
+                encoding = header.get_charset()
                 if encoding:
                     self.encoding = encoding
         l_tag = tag.lower()
@@ -266,7 +266,7 @@ class HTMLTreeBuilder(ElementTree.TreeBuilder):
         return self._last
 
     def data(self, data):
-        if isinstance(data, type('')) and is_not_ascii(data):
+        if isinstance(data, bytes) and is_not_ascii(data):
             # convert to unicode, but only if necessary
             data = str(data, self.encoding, "ignore")
         ElementTree.TreeBuilder.data(self, data)

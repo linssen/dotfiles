@@ -235,6 +235,8 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                     elif prev_style == self.operator_style and \
                             prev_char == "," and implicit:
                         return self._functionCalltipTrigger(ac, prev_pos, DEBUG)
+                    elif text == "namespace":
+                        return Trigger(lang, TRG_FORM_CPLN, "use-global-namespaces", pos, implicit)
             elif last_style == self.operator_style:
                 if DEBUG:
                     print("  lang_style is operator style")
@@ -289,13 +291,24 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                         p, c, prev_style = ac.getPrecedingPosCharStyle(
                             prev_style, self.comment_styles_or_whitespace)
                     if prev_style in (self.identifier_style, self.keyword_style):
-                        return Trigger(
-                            lang, TRG_FORM_CALLTIP, "call-signature",
-                            pos, implicit)
+
+                        if buf.caller == "on_modified":
+                            ##call function trigger in within function brackets
+                            if last_char == "(" and buf.orig_pos-pos >= 3:
+                                ## at least 3 char have been typed to trigger
+                                if buf.accessor.char_at_pos(buf.orig_pos-1) in "(,\"":
+                                    #don't annoy with completions to early
+                                    return None
+                                trig_pos, ch, style = ac.getPrevPosCharStyle()
+                                return Trigger(
+                                    lang, TRG_FORM_CPLN, "functions",
+                                    buf.orig_pos-3, implicit)
+                        else:
+                            return Trigger(
+                                lang, TRG_FORM_CALLTIP, "call-signature",
+                                pos, implicit)
+
                 elif last_char == "\\":
-                    # Ensure does not trigger when defining a new namespace,
-                    # i.e., do not trigger for:
-                    #      namespace foo\<|>
                     style = last_style
                     while style in (self.operator_style, self.identifier_style):
                         p, c, style = ac.getPrecedingPosCharStyle(
@@ -317,17 +330,48 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                             print("Triggering use-namespace completion")
                         return Trigger(lang, TRG_FORM_CPLN, "use-namespace",
                                        pos, implicit)
-                    elif prev_text[1] != "namespace":
+                    elif prev_text[1] == "namespace": #namespace completions on "namespace" keyword!
+                        if DEBUG:
+                            print("Triggering namespace completion")
+                        return Trigger(
+                            lang, TRG_FORM_CPLN, "namespace-members-nmspc-only",
+                            pos, implicit)
+                    else:
                         if DEBUG:
                             print("Triggering namespace completion")
                         return Trigger(
                             lang, TRG_FORM_CPLN, "namespace-members",
                             pos, implicit)
 
-            elif last_style == self.variable_style or \
-                    (not implicit and last_char == "$"):
+            elif last_style == self.variable_style or (not implicit and last_char == "$"):
                 if DEBUG:
                     print("Variable style")
+
+                if prev_char == ":":
+                    if not prev_char == ":":
+                        return None
+                    ac.setCacheFetchSize(10)
+                    p, c, style = ac.getPrecedingPosCharStyle(
+                        prev_style, self.comment_styles)
+                    if DEBUG:
+                        print("Preceding: %d, %r, %d" % (p, c, style))
+                    if style is None:
+                        return None
+                    elif style == self.keyword_style:
+                        # Check if it's a "self::" or "parent::" expression
+                        p, text = ac.getTextBackWithStyle(self.keyword_style,
+                                                          # Ensure we don't go
+                                                          # too far
+                                                          max_text_len=6)
+                        if DEBUG:
+                            print("Keyword text: %d, %r" % (p, text))
+                            ac.dump()
+                        print(text)
+                        #if text not in ("parent", "self", "static"):
+                        #    return None
+                    return Trigger(lang, TRG_FORM_CPLN, "static-members",
+                                   pos, implicit)
+
                 # Completion for variables (builtins and user defined variables),
                 # must occur after a "$" character.
                 if not implicit and last_char == '$':
@@ -358,7 +402,21 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                 # fourth_char, fourth_style = last_four_char_and_styles[3]
                 if prev_style == last_style:
                     trig_pos, ch, style = ac.getPrevPosCharStyle()
-                    if style == last_style:
+
+                    if buf.accessor.char_at_pos(pos-2) == '_' and buf.accessor.char_at_pos(pos-3) == '_' and buf.accessor.style_at_pos(pos-4) == self.whitespace_style:
+                        # XXX - Check the php version, magic methods only
+                        #       appeared in php 5.
+                        #
+                        p, ch, style = ac.getPrevPosCharStyle(ignore_styles=self.comment_styles)
+                        last_keyword = ac.getTextBackWithStyle(self.keyword_style, max_text_len=9)[1].strip()
+                        if last_keyword == "function":
+                            if DEBUG:
+                                print("triggered:: complete magic-methods")
+                            return Trigger(
+                                lang, TRG_FORM_CPLN, "magic-methods",
+                                prev_pos, implicit)
+
+                    elif style == last_style:
                         p, ch, style = ac.getPrevPosCharStyle(
                             ignore_styles=self.comment_styles)
                         # style is None if no change of style (not ignored) was
@@ -409,19 +467,6 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                             print("identifier preceeded by an invalid style: " \
                                   "%r, p: %r" % (style, p, ))
 
-                    elif last_char == '_' and prev_char == '_' and \
-                            style == self.whitespace_style:
-                        # XXX - Check the php version, magic methods only
-                        #       appeared in php 5.
-                        p, ch, style = ac.getPrevPosCharStyle(
-                            ignore_styles=self.comment_styles)
-                        if style == self.keyword_style and \
-                           ac.getTextBackWithStyle(style, max_text_len=9)[1] == "function":
-                            if DEBUG:
-                                print("triggered:: complete magic-methods")
-                            return Trigger(
-                                lang, TRG_FORM_CPLN, "magic-methods",
-                                prev_pos, implicit)
 
             # PHPDoc completions
             elif last_char == "@" and last_style in self.comment_styles:
@@ -545,6 +590,7 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
         # Else, let's try to work out some other options
         accessor = buf.accessor
         prev_style = accessor.style_at_pos(curr_pos - 1)
+
         if prev_style in (self.identifier_style, self.keyword_style):
             # We don't know what to trigger here... could be one of:
             # functions:
@@ -566,6 +612,12 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                 print("  prev_style: %d" % prev_style)
                 ac.dump()
             if pos_before_identifer < pos:
+                last_keyword = ac.getTextBackWithStyle(self.keyword_style, max_text_len=9)[1].strip()
+                if last_keyword == "namespace":
+                    implicit = False
+                    return Trigger(
+                        lang, TRG_FORM_CPLN, "use-global-namespaces",
+                        pos, implicit)
                 resetPos = min(pos_before_identifer + 4, accessor.length() - 1)
                 ac.resetToPosition(resetPos)
                 if DEBUG:
@@ -601,6 +653,7 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
 
     #@util.hotshotit
     def async_eval_at_trg(self, buf, trg, ctlr):
+        buf.last_citdl_expr = None
         if _xpcom_:
             trg = UnwrapObject(trg)
             ctlr = UnwrapObject(ctlr)
@@ -634,12 +687,18 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
             buf.mgr.request_eval(evalr)
 
         else:
+            if trg.type == "static-members":
+                if buf.accessor.char_at_pos(trg.pos-1) == "$":
+                    #adjust trigger position so that static properties
+                    #with leading "$" will scatter the citdl_expr
+                    trg.pos -= 1
             try:
                 citdl_expr = self.citdl_expr_from_trg(buf, trg)
             except CodeIntelError as ex:
                 ctlr.error(str(ex))
                 ctlr.done("error")
                 return
+            buf.last_citdl_expr = citdl_expr
             line = buf.accessor.line_from_pos(pos)
             evalr = PHPTreeEvaluator(ctlr, buf, trg, citdl_expr, line)
             buf.mgr.request_eval(evalr)
@@ -720,7 +779,7 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                     print("i now: %d, ch: %r" % (i, ch))
 
                 if ch in WHITESPACE:
-                    if trg.type in ("use-namespace", "namespace-members"):
+                    if trg.type in ("use-namespace", "namespace-members", "namespace-members-nmspc-only"):
                         # Namespaces cannot be split over whitespace.
                         break
                     while ch in WHITESPACE:
@@ -840,7 +899,7 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
             print(util.banner("done"))
         return citdl_expr
 
-    def citdl_expr_from_trg(self, buf, trg):
+    def citdl_expr_from_trg(self, buf, trg, DEBUG=False):
         """Return a PHP CITDL expression preceding the given trigger.
 
         The expression drops newlines, whitespace, and function call
@@ -879,13 +938,18 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                 i = trg.extra.get("bracket_pos")   # triggered on foo['
             elif trg.type == "use":
                 i = trg.pos + 1
-            elif trg.type == "namespace-members" or \
-                    trg.type == "use-namespace":
+            elif trg.type in ["namespace-members","use-namespace","namespace-members-nmspc-only"]:
                 i = trg.pos - 1
+            elif trg.type == "use-global-namespaces":
+                i = trg.pos + 1
             else:
                 i = trg.pos - 2  # skip past the trigger char
-            return self._citdl_expr_from_pos(trg, buf, i, trg.implicit,
+            citdl_expr = self._citdl_expr_from_pos(trg, buf, i, trg.implicit,
                                              DEBUG=DEBUG)
+            if trg.type == "functions" and len(citdl_expr) < 3:
+                #ensure function trigger has at least 3 chars typed
+                raise CodeIntelError
+            return citdl_expr
         elif trg.form == TRG_FORM_DEFN:
             return self.citdl_expr_under_pos(trg, buf, trg.pos, DEBUG)
         else:   # trg.form == TRG_FORM_CALLTIP:
@@ -1018,37 +1082,47 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
 
         return php_ver, include_path
 
-    def _extra_dirs_from_env(self, env):
-        extra_dirs = set()
-        include_project = env.get_pref("codeintel_scan_files_in_project", True)
-        if include_project:
-            proj_base_dir = env.get_proj_base_dir()
-            if proj_base_dir is not None:
-                extra_dirs.add(proj_base_dir)  # Bug 68850.
-        for pref in env.get_all_prefs("phpExtraPaths"):
-            if not pref:
-                continue
-            extra_dirs.update(d.strip() for d in pref.split(os.pathsep)
-                              if exists(d.strip()))
-        if extra_dirs:
-            log.debug("PHP extra lib dirs: %r", extra_dirs)
-            max_depth = env.get_pref("codeintel_max_recursive_dir_depth", 10)
-            php_assocs = env.assoc_patterns_from_lang("PHP")
-            extra_dirs = tuple(
-                util.gen_dirs_under_dirs(extra_dirs,
-                                         max_depth=max_depth,
+    def _expand_extra_dirs(self, env, extra_dirs):
+        max_depth = env.get_pref("codeintel_max_recursive_dir_depth", 10)
+        php_assocs = env.assoc_patterns_from_lang("PHP")
+        return util.gen_dirs_under_dirs(extra_dirs, max_depth=max_depth,
                                          interesting_file_patterns=php_assocs)
-            )
-        else:
-            extra_dirs = ()  # ensure retval is a tuple
-        return extra_dirs
+
+    #def _extra_dirs_from_env(self, env):
+    #    extra_dirs = set()
+    #    include_project = env.get_pref("codeintel_scan_files_in_project", True)
+    #    if include_project:
+    #        proj_base_dir = env.get_proj_base_dir()
+    #        if proj_base_dir is not None:
+    #            extra_dirs.add(proj_base_dir)  # Bug 68850.
+    #    for pref in env.get_all_prefs("scanExtraPaths"):
+    #        if not pref:
+    #            continue
+    #        extra_dirs.update(d.strip() for d in pref.split(os.pathsep)
+    #                          if exists(d.strip()))
+    #    if extra_dirs:
+    #        log.debug("PHP extra lib dirs: %r", extra_dirs)
+    #        max_depth = env.get_pref("codeintel_max_recursive_dir_depth", 10)
+    #        php_assocs = env.assoc_patterns_from_lang("PHP")
+    #        extra_dirs = tuple(
+    #            util.gen_dirs_under_dirs(extra_dirs,
+    #                                     max_depth=max_depth,
+    #                                     interesting_file_patterns=php_assocs)
+    #        )
+    #        exclude_patterns = env.get_pref("codeintel_scan_exclude_dir")
+    #        if not exclude_patterns is None:
+    #            for p in exclude_patterns:
+    #                extra_dirs = [d for d in extra_dirs if not re.search(p, d)]
+    #    else:
+    #        extra_dirs = ()  # ensure retval is a tuple
+    #    return extra_dirs
 
     def _buf_indep_libs_from_env(self, env):
         """Create the buffer-independent list of libs."""
         cache_key = "php-libs"
         if cache_key not in env.cache:
             env.add_pref_observer("php", self._invalidate_cache)
-            env.add_pref_observer("phpExtraPaths",
+            env.add_pref_observer("codeintel_scan_extra_dir",
                                   self._invalidate_cache_and_rescan_extra_dirs)
             env.add_pref_observer("phpConfigFile",
                                   self._invalidate_cache)
@@ -1087,9 +1161,9 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
 
             # - extradirslib
             extra_dirs = self._extra_dirs_from_env(env)
-            for extra_dir in extra_dirs:
+            if extra_dirs:
                 libs.append(db.get_lang_lib("PHP", "extradirslib",
-                                            [extra_dir], "PHP"))
+                                            extra_dirs, "PHP"))
 
             # - inilib (i.e. dirs in the include_path in PHP.ini)
             include_dirs = [d for d in include_path
@@ -1104,6 +1178,10 @@ class PHPLangIntel(CitadelLangIntel, ParenStyleCalltipIntelMixin,
                                              max_depth=max_depth,
                                              interesting_file_patterns=php_assocs)
                 )
+                exclude_patterns = env.get_pref("codeintel_scan_exclude_dir")
+                if not exclude_patterns is None:
+                    for p in exclude_patterns:
+                        include_dirs = [d for d in include_dirs if not re.search(p, d)]
                 if include_dirs:
                     libs.append(db.get_lang_lib("PHP", "inilib",
                                                 include_dirs, "PHP"))

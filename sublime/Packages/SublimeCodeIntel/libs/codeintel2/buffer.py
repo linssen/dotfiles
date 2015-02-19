@@ -83,6 +83,7 @@ class Buffer(object):
 
     # Language-specific attributes that subclasses must fill-in.
     lang = None             # language name
+    caller = None           # called by "on_modified" or by Command?
     cpln_fillup_chars = ""  # chars on which autocomplete UI will "fillup"
     cpln_stop_chars = ""    # chars on which autocomplete UI will stop
 
@@ -114,6 +115,7 @@ class Buffer(object):
         self._env = env
         self.path = path if path is not None else "<Unsaved>"
         self.encoding = encoding
+        self.last_citdl_expr = None
         if lang is not None:
             self.lang = lang
 

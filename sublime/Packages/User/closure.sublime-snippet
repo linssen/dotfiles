@@ -1,0 +1,13 @@
+<snippet>
+    <content><![CDATA[
+(function (window, undefined) {
+    'use strict';
+
+
+}(window));
+
+]]></content>
+    <tabTrigger>(func</tabTrigger>
+    <scope>source.js</scope>
+    <description>Begins a new closure with my prefs.</description>
+</snippet>

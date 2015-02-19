@@ -127,6 +127,28 @@ Available settings:
 Troubleshooting
 ---------------
 
+If you are having problems or SublimeCodeIntel seems slow/unresponsive/non-working, there are some things you should try:
+
+1. Make sure the SublimeCodeIntel is not being treated as an ignored package.
+
+2. Regenerate indexing database.
+
+3. Open a new issue.
+
+
+Ignored package?
+~~~~~~~~~~~~~~~~
+
+To make sure Sublime Text didn't add SublimeCodeIntel to the list of ignored packages (this happens some times when packages are being installed/upgraded):
+
+* Select the ``Preferences/Settings - Default`` menu item
+
+* Find the ``ignored_packages`` setting and remove SublimeCodeIntel from the list.
+
+
+Regenerate index
+~~~~~~~~~~~~~~~~
+
 To force re-indexation of the code intelligence database you need to follow these steps:
 
 * Close Sublime Text
@@ -135,7 +157,16 @@ To force re-indexation of the code intelligence database you need to follow thes
 
 * Delete the whole directory ``~/.codeintel`` and all of its content. Particularly, if you want to delete only the indexes, the code intelligence database indexes are located inside ``~/.codeintel/db``.
 
-* Start Sublime Text and enjoy a clean re-indexing!
+* Start Sublime Text
+
+* Try doing some code intelligence with the files in your project and enjoy a clean re-indexing! (Remember that the database is being regenerated with this procedure, so you'll see it takes some time to autocomplete the first few times, you'll have to wait a bit for things to be fast again)
+
+Opening an issue
+~~~~~~~~~~~~~~~~
+
+If the problems persists after trying the above solutions, open a new issue in https://github.com/SublimeCodeIntel/SublimeCodeIntel/issues/
+
+When opening new issues, please check no other issues exist which report the same problem and provide all the messages from the Sublime Text console (the console is accessed via the ``ctrl+``` shortcut or the ``View > Show Console`` menu) and the ``~/.codeintel/codeintel.log`` file (``%userprofile%\.codeintel\codeintel.log`` in Windows) as well as mentioning the Sublime Text version, the platform you are using and the languages you are using the code intelligence on.
 
 
 Building
@@ -148,7 +179,92 @@ More information in SublimeCodeIntel/CodeIntelSources/`src <https://github.com/S
 
 What's New
 ----------
-v2.0.6 (?):
+
+v2.1.7 (2015-01-26):
+
++ Fixed triggering issues with autocompletion and stop chars.
+
++ ST2 improvements. Still might show "slow plugin"
+  (just ignore, project_file_name is being emulated from ST3, which is "slow")
+
++ Cleanups
+
+
+v2.1.6 (2015-01-23):
+
++ Optimizations.
+
++ Compatibility issues with ST2.
+
++ Stop characters fixed.
+
+
+v2.1.5 (2015-01-22):
+
++ Cleanups.
+
++ Autocomplete also triggered after space (for import<space> autocompletions).
+
++ Tooltip and snippets for functions re-added.
+
+
+v2.1.4 (2015-01-21):
+
++ Improved compatibility with ST2
+
++ PHP magic-methods tweaks ported from wizza-smile's fork.
+
+
+v2.1.3 (2015-01-20):
+
++ Features and enhancements from wizza-smile's fork.
+
++ PHP completions within function brackets.
+
+
+v2.1.2 (2015-01-16):
+
++ Fixed issue with ordereddict in ST3 (Python 3).
+
++ Fixed issue with unrevised languages.
+
++ Perl compatibility improved/fixed.
+
+
+v2.1.1 (2015-01-14):
+
++ Currently, this version features all the new great enhancements by
+  `wizza-smile <https://github.com/wizza-smile>`_ which he is currently working
+  on, in his own fork of SublimeCodeIntel: SublimeCodeIntel3 at
+  https://github.com/wizza-smile/SublimeCodeIntel3
+
++ Sublime Text 2 compatibility fixed.
+
++ Fix the "codeintel_scan_exclude_dir" setting (it was doing nothing at all so far!).
+
+
+v2.1.0 (2015-01-13):
+
++ New settings concept. Settings can now be defined in *.sublime-project file.
+
++ Define the directory, where your projects codeintel database should reside
+  (new setting "codeintel_database_dir").
+
++ Sublime style word completions from buffer (new setting
+  "codeintel_word_completions" possible values: "buffer", "all" or "none").
+
++ Completions are now showing user-defined snippets.
+
++ PHP local variables support.
+
++ PHP static variables support.
+
++ PHP completions from HTML embedded blocks.
+
++ Improved speed for PHP completions dramatically by fixing the number of import libs.
+
+
+v2.0.6 (2013-09-21):
 
 + Tooltips can use Popups, Output Panel or Status Bar ("popup", "panel", "status" respectively, in the settings)
 
