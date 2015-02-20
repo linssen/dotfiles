@@ -9,7 +9,6 @@ unset file
 homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
-rvm=$HOME/.rvm/scripts/rvm
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 powerline=$HOME/.powerline/scripts
 
@@ -17,12 +16,12 @@ export WORKON_HOME=$HOME/.virtualenvs
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
 export PIP_RESPECT_VIRTUALENV=true
 
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
-
 # Bash completion
 if [ -f "/usr/local/bin/brew" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
 fi
+
+eval "$(rbenv init -)"
 
 green="\[\033[01;32m\]"
 cyan="\[\033[01;36m\]"
@@ -34,7 +33,7 @@ PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}\3
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
-export PATH=$homebrew:$node:$node_packages:$rvm:$sublime:$powerline:$PATH
+export PATH=$homebrew:$node:$node_packages:$sublime:$powerline:$PATH
 
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
