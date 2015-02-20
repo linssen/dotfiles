@@ -16,6 +16,7 @@
 		"ReactJS",
 		"SCSS",
 		"SideBarEnhancements",
+		"Solarized Color Scheme",
 		"SublimeCodeIntel",
 		"SublimeLinter",
 		"SublimeLinter-contrib-puppet",
@@ -25,6 +26,7 @@
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-pyflakes",
-		"Theme - Soda"
+		"Theme - Soda",
+		"Theme - Spacegray"
 	]
 }

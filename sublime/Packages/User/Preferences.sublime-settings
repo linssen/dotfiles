@@ -1,5 +1,5 @@
 {
-	"color_scheme": "Packages/User/Monokai (SL).tmTheme",
+	"color_scheme": "Packages/User/SublimeLinter/base16-ocean.dark (SL).tmTheme",
 	"drawWhiteSpace": true,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -24,9 +24,9 @@
 	"ignore_inodes": true,
 	"ignored_packages":
 	[
+		"Vintage",
 		"Markdown",
-		"SublimeBlockCursor",
-		"Vintage"
+		"SublimeBlockCursor"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
@@ -51,7 +51,7 @@
 		100
 	],
 	"scroll_past_end": true,
-	"theme": "Soda Dark 3.sublime-theme",
+	"theme": "Spacegray.sublime-theme",
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
