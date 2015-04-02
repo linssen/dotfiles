@@ -49,9 +49,9 @@
 [submodule "sublime/Packages/Nettuts-Fetch"]
 	path = sublime/Packages/Nettuts-Fetch
 	url = https://github.com/weslly/Nettuts-Fetch.git
-[submodule "vim/vim.symlink/bundle/syntastic.vim"]
-	path = vim/vim.symlink/bundle/syntastic.vim
-	url = https://github.com/scrooloose/syntastic.git
 [submodule "vim/vim.symlink/bundle/jshint2.vim"]
 	path = vim/vim.symlink/bundle/jshint2.vim
 	url = https://github.com/Shutnik/jshint2.vim.git
+[submodule "vim/vim.symlink/bundle/syntastic.vim"]
+	path = vim/vim.symlink/bundle/syntastic.vim
+	url = git@github.com:scrooloose/syntastic.git
