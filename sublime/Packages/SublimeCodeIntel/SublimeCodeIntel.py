@@ -62,7 +62,7 @@ Configuration files (`~/.codeintel/config' or `project_root/.codeintel/config').
 """
 from __future__ import print_function, unicode_literals
 
-VERSION = "2.1.7"
+VERSION = "2.2.0"
 
 import os
 import re
@@ -1390,7 +1390,7 @@ settings_manager = SettingsManager()
 
 
 # make sure all settings could be loaded and sublime is ready
-def codeintel_enabled(default=False):
+def codeintel_enabled(view=None, default=False):
     return settings_manager.sublime_auto_complete is not None
 
 
@@ -1466,6 +1466,9 @@ class PythonCodeIntel(sublime_plugin.EventListener):
         pos = sel.end()
         next_char = view.substr(sublime.Region(pos - 1, pos))
 
+        if next_char == '\n':
+            return
+
         is_fill_char = next_char and next_char in cpln_fillup_chars.get(lang, '')
         is_stop_char = next_char and next_char in cpln_stop_chars.get(lang, '')
 
@@ -1473,17 +1476,26 @@ class PythonCodeIntel(sublime_plugin.EventListener):
         if is_stop_char:
             hide_auto_complete(view)
 
-        # print('on_modified', view.command_history(1), view.command_history(0), view.command_history(-1))
-        if (not hasattr(view, 'command_history') or view.command_history(1)[1] is None and (
-                view.command_history(0)[0] == 'insert' and (
-                    view.command_history(0)[1]['characters'][-1] != '\n'
-                ) or
-                view.command_history(-1)[0] in ('insert', 'paste') and (
-                    view.command_history(0)[0] == 'commit_completion' or
-                    view.command_history(0)[0] == 'insert_snippet' and view.command_history(0)[1]['contents'] == '($0)'
-                )
-        )):
-            if view.command_history(0)[0] == 'commit_completion':
+        command_history = getattr(view, 'command_history', None)
+        if command_history:
+            redo_command = command_history(1)
+            previous_command = view.command_history(0)
+            before_previous_command = view.command_history(-1)
+        else:
+            redo_command = previous_command = before_previous_command = None
+
+        # print('on_modified', "'%s'" % current_char, redo_command, previous_command, before_previous_command)
+        if not command_history or redo_command[1] is None and (
+            previous_command[0] == 'paste' or
+            previous_command[0] == 'insert' and previous_command[1]['characters'][-1] not in ('\n', '\t') or
+            previous_command[0] == 'insert_snippet' and previous_command[1]['contents'] == '($0)' or
+            before_previous_command[0] in ('insert', 'paste') and (
+                previous_command[0] == 'commit_completion' or
+                previous_command[0] == 'insert_completion' or
+                previous_command[0] == 'insert_best_completion'
+            )
+        ):
+            if previous_command[0] == 'commit_completion':
                 forms = ('calltips',)
             else:
                 forms = ('calltips', 'cplns')
@@ -1756,7 +1768,7 @@ class CodeintelCommand(sublime_plugin.TextCommand):
 
 
 class SublimecodeintelWindowCommand(sublime_plugin.WindowCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         view = self.window.active_view()
         return bool(view)
 
@@ -1784,17 +1796,17 @@ class SublimecodeintelCommand(SublimecodeintelWindowCommand):
 
 
 class SublimecodeintelEnableCommand(SublimecodeintelCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelEnableCommand, self).is_enabled(False)
 
 
 class SublimecodeintelDisableCommand(SublimecodeintelCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelDisableCommand, self).is_enabled(True)
 
 
 class SublimecodeintelResetCommand(SublimecodeintelCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelResetCommand, self).is_enabled()
 
 
@@ -1816,20 +1828,20 @@ class SublimecodeintelLiveCommand(SublimecodeintelCommand):
 
 
 class SublimecodeintelEnableLiveCommand(SublimecodeintelLiveCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelEnableLiveCommand, self).is_enabled(False, False)
 
 
 class SublimecodeintelDisableLiveCommand(SublimecodeintelLiveCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelDisableLiveCommand, self).is_enabled(True, False)
 
 
 class SublimecodeintelEnableLiveLangCommand(SublimecodeintelLiveCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelEnableLiveLangCommand, self).is_enabled(False, True)
 
 
 class SublimecodeintelDisableLiveLangCommand(SublimecodeintelLiveCommand):
-    def is_enabled(self):
+    def is_enabled(self, *args):
         return super(SublimecodeintelDisableLiveLangCommand, self).is_enabled(True, True)

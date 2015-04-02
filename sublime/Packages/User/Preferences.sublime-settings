@@ -25,8 +25,8 @@
 	"ignored_packages":
 	[
 		"Vintage",
-		"SublimeBlockCursor",
-		"Markdown"
+		"Markdown",
+		"SublimeBlockCursor"
 	],
 	"line_padding_bottom": 0,
 	"line_padding_top": 0,
