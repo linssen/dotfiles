@@ -1,8 +1,12 @@
 {
+	"in_process_packages":
+	[
+	],
 	"installed_packages":
 	[
 		"AdvancedNewFile",
 		"DashDoc",
+		"Dockerfile Syntax Highlighting",
 		"Emmet",
 		"Git",
 		"GitGutter",
