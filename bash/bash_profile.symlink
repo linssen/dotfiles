@@ -11,6 +11,7 @@ node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 powerline=$HOME/.powerline/scripts
+my_bin=$HOME/.dotfiles/bin
 
 export WORKON_HOME=$HOME/.virtualenvs
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
@@ -33,7 +34,7 @@ PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}\3
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
-export PATH=$homebrew:$node:$node_packages:$sublime:$powerline:$PATH
+export PATH=$homebrew:$node:$node_packages:$sublime:$powerline:$my_bin:$PATH
 
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
