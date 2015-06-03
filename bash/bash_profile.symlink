@@ -40,6 +40,6 @@ if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
 fi
 
-if [ -f "/usr/local/bin/boot2docker" ]; then
+if [ -x "/usr/local/bin/boot2docker" ] && [ "$(boot2docker status)" = "running" ]; then
     $(boot2docker shellinit)
 fi
