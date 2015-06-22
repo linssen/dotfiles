@@ -1,4 +1,6 @@
 {
+	"always_show_minimap_viewport": true,
+	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
 	"drawWhiteSpace": true,
 	"ensure_newline_at_eof_on_save": true,
 	"file_exclude_patterns":
@@ -27,8 +29,14 @@
 		"SublimeBlockCursor",
 		"Markdown"
 	],
-	"line_padding_bottom": 0,
-	"line_padding_top": 0,
+	"indent_guide_options":
+	[
+		"draw_normal",
+		"draw_active"
+	],
+	"line_padding_bottom": 1,
+	"line_padding_top": 1,
+	"overlay_scroll_bars": "enabled",
 	"paths":
 	{
 		"osx":
@@ -51,12 +59,6 @@
 	],
 	"scroll_past_end": true,
 	"theme": "Material-Theme-Darker.sublime-theme",
-	"color_scheme": "Packages/Material Theme/schemes/Material-Theme.tmTheme",
-	"overlay_scroll_bars": "enabled",
-	"line_padding_top": 1,
-	"line_padding_bottom": 1,
-	"always_show_minimap_viewport": true,
-	"indent_guide_options": [ "draw_normal", "draw_active" ],
 	"translate_tabs_to_spaces": true,
 	"trim_trailing_white_space_on_save": true,
 	"vintage_start_in_command_mode": true,
