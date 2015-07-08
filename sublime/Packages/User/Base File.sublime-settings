@@ -1,0 +1,18 @@
+{
+  "jsdocs_deep_indent": false,
+
+  "jsdocs_indentation_spaces_same_para": 0,
+
+  "jsdocs_align_tags": "no",
+
+  "jsdocs_param_name": true,
+
+  "jsdocs_spacer_between_sections": "after_description",
+
+  "jsdocs_notation_map": [
+      {
+          "prefix": "$",
+          "type": "jQuery"
+      }
+  ]
+}
