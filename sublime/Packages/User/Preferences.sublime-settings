@@ -25,9 +25,9 @@
 	"ignore_inodes": true,
 	"ignored_packages":
 	[
-		"Vintage",
+		"Markdown",
 		"SublimeBlockCursor",
-		"Markdown"
+		"Vintage"
 	],
 	"indent_guide_options":
 	[
