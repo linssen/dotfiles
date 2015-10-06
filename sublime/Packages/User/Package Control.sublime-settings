@@ -1,4 +1,5 @@
 {
+	"bootstrapped": true,
 	"in_process_packages":
 	[
 	],
@@ -6,6 +7,7 @@
 	[
 		"AdvancedNewFile",
 		"AutoFileName",
+		"Better CoffeeScript",
 		"DashDoc",
 		"DocBlockr",
 		"Dockerfile Syntax Highlighting",
@@ -13,6 +15,8 @@
 		"Git",
 		"GitGutter",
 		"INI",
+		"Jinja2",
+		"JSX",
 		"LESS",
 		"MarkdownEditing",
 		"Material Theme",
