@@ -22,7 +22,10 @@ if [ -f "/usr/local/bin/brew" ] && [ -f $(brew --prefix)/etc/bash_completion ]; 
     . $(brew --prefix)/etc/bash_completion
 fi
 
-eval "$(rbenv init -)"
+# Init rbenv, if it's there
+if [ -f "/usr/local/bin/rbenv" ]; then
+    eval "$(rbenv init -)"
+fi
 
 green="\[\033[01;32m\]"
 cyan="\[\033[01;36m\]"
