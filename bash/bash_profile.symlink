@@ -39,7 +39,3 @@ export PATH=$homebrew:$node:$node_packages:$sublime:$powerline:$my_bin:$PATH
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
 fi
-
-if [ -x "/usr/local/bin/boot2docker" ] && [ "$(boot2docker status)" = "running" ]; then
-    $(boot2docker shellinit)
-fi
