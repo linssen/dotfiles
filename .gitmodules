@@ -10,9 +10,6 @@
 [submodule "vim/vim.symlink/bundle/nerdcommenter.vim"]
 	path = vim/vim.symlink/bundle/nerdcommenter.vim
 	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/vim.symlink/bundle/powerline.vim"]
-	path = vim/vim.symlink/bundle/powerline.vim
-	url = git://github.com/Lokaltog/vim-powerline.git
 [submodule "vim/vim.symlink/bundle/fugitive.vim"]
 	path = vim/vim.symlink/bundle/fugitive.vim
 	url = git://github.com/tpope/vim-fugitive.git
@@ -25,9 +22,6 @@
 [submodule "vim/vim.symlink/bundle/textile.vim"]
 	path = vim/vim.symlink/bundle/textile.vim
 	url = git://github.com/timcharper/textile.vim.git
-[submodule "tmux/tmux.symlink/tmux-powerline"]
-	path = tmux/tmux.symlink/tmux-powerline
-	url = git://github.com/erikw/tmux-powerline.git
 [submodule "tmux/tmux.symlink/colors/solarized"]
 	path = tmux/tmux.symlink/colors/solarized
 	url = git://github.com/seebi/tmux-colors-solarized.git
@@ -37,12 +31,6 @@
 [submodule "powerline/powerline.symlink"]
 	path = powerline/powerline.symlink
 	url = git://github.com/Lokaltog/powerline
-[submodule "sublime/Packages/Package Control"]
-	path = sublime/Packages/Package Control
-	url = https://github.com/wbond/sublime_package_control.git
-[submodule "sublime/Packages/LiveReload"]
-	path = sublime/Packages/LiveReload
-	url = https://github.com/dz0ny/LiveReload-sublimetext2.git
 [submodule "grunt/grunt-init.symlink/zepackage"]
 	path = grunt/grunt-init.symlink/zepackage
 	url = https://github.com/linssen/grunt-init-zepackage.git
