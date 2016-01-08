@@ -52,9 +52,13 @@ ZSH_CUSTOM=~/.zsh/custom
 plugins=(git)
 
 # User configuration
+sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/wil/.rvm/bin"
 # export MANPATH="/usr/local/man:$MANPATH"
+if [ -d "$sublime" ]; then
+    export PATH=$sublime:$PATH
+fi
 
 source $ZSH/oh-my-zsh.sh
 
