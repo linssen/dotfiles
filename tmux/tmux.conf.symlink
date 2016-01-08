@@ -40,4 +40,14 @@ source ~/.powerline/powerline/bindings/tmux/powerline_tmux_1.9_plus.conf
 
 # Mouse
 # ---------------------------------------------------------------------
-set -g mouse on
+set-option -g mouse on
+
+# Plugin manager
+# ---------------------------------------------------------------------
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'nhdaly/tmux-scroll-copy-mode'
+set -g @plugin 'tmux-plugins/tmux-yank'
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
