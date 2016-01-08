@@ -54,9 +54,13 @@ ZSH_CUSTOM=~/.zsh/custom
 plugins=(git)
 
 # User configuration
+node=/usr/local/lib/node
+node_packages=/usr/local/share/npm/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
+my_bin=$HOME/.dotfiles/bin
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/wil/.rvm/bin"
+export PATH=$node:$node_packages:$my_bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
