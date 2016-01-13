@@ -58,6 +58,11 @@ export WORKON_HOME=$HOME/.virtualenvs
 [[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
 export PIP_RESPECT_VIRTUALENV=true
 
+# Init rbenv, if it's there
+if [ -f "/usr/local/bin/rbenv" ]; then
+    eval "$(rbenv init -)"
+fi
+
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
