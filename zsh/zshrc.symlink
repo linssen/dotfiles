@@ -54,6 +54,10 @@ ZSH_CUSTOM=~/.zsh/custom
 plugins=(git)
 
 # User configuration
+export WORKON_HOME=$HOME/.virtualenvs
+[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
+export PIP_RESPECT_VIRTUALENV=true
+
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
