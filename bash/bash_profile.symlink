@@ -37,7 +37,7 @@ PS1="[${cyan}\u@\h${NC}: ${green}\W${NC}]${yellow}\$(__git_ps1)${NC}\n${green}\3
 
 PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$PWD")'
 
-export PATH=$homebrew:$node:$node_packages:$sublime:$powerline:$my_bin:$PATH
+export PATH=$homebrew:$node:$node_packages:$powerline:$my_bin:$PATH
 
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
