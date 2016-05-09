@@ -71,7 +71,7 @@ my_bin=$HOME/.dotfiles/bin
 export NVM_DIR=~/.nvm
 . $(brew --prefix nvm)/nvm.sh
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/wil/.rvm/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/wil/.rvm/bin"
 export PATH=$node:$node_packages:$my_bin:$PATH
 # export MANPATH="/usr/local/man:$MANPATH"
 if [ -d "$sublime" ]; then
