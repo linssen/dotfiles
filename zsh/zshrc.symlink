@@ -63,16 +63,10 @@ if [ -f "/usr/local/bin/rbenv" ]; then
     eval "$(rbenv init -)"
 fi
 
-node=/usr/local/lib/node
-node_packages=/usr/local/share/npm/bin
 sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 my_bin=$HOME/.dotfiles/bin
 
-export NVM_DIR=~/.nvm
-. $(brew --prefix nvm)/nvm.sh
-
-export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X11/bin:/usr/local/MacGPG2/bin:/Users/wil/.rvm/bin"
-export PATH=$node:$node_packages:$my_bin:$PATH
+export PATH="$sublime:$my_bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
 # export MANPATH="/usr/local/man:$MANPATH"
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
@@ -104,3 +98,6 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
