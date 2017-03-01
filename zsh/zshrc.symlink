@@ -8,6 +8,8 @@ export ZSH=~/.oh-my-zsh
 ZSH_THEME="bullet-train"
 BULLETTRAIN_VIRTUALENV_SHOW="true"
 BULLETTRAIN_RUBY_SHOW="false"
+BULLETTRAIN_VIRTUALENV_FG="236"
+BULLETTRAIN_VIRTUALENV_PREFIX="🐍 "
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
