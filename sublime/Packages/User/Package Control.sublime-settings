@@ -23,6 +23,7 @@
 		"Material Theme",
 		"Origami",
 		"Package Control",
+		"PackageDev",
 		"PackageResourceViewer",
 		"Puppet",
 		"ReactJS",
@@ -39,6 +40,7 @@
 		"SublimeLinter-jshint",
 		"SublimeLinter-json",
 		"SublimeLinter-pyflakes",
+		"SublimeLinter-pylint",
 		"Theme - Soda",
 		"Theme - Spacegray"
 	]

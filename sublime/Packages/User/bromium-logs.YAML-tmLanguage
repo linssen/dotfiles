@@ -1,9 +1,9 @@
 # [PackageDev] target_format: plist, ext: tmLanguage
 ---
 name: Bromium Logs
-scopeName: source.syntax_name
-fileTypes: ["log"]
-uuid: be994ca9-59e1-4e7b-ae41-f3db7a507b91
+scopeName: source.log
+fileTypes: [log]
+uuid: fc795624-1143-4f43-804d-61077a5b84e3
 
 patterns:
 -
