@@ -55,11 +55,6 @@ ZSH_CUSTOM=~/.zsh/custom
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
-# User configuration
-export WORKON_HOME=$HOME/.virtualenvs
-[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
-export PIP_RESPECT_VIRTUALENV=true
-
 # Init rbenv, if it's there
 if [ -f "/usr/local/bin/rbenv" ]; then
     eval "$(rbenv init -)"
@@ -73,6 +68,17 @@ export PATH="$sublime:$my_bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/
 if [ -d "$sublime" ]; then
     export PATH=$sublime:$PATH
 fi
+
+# Pyenv
+if [ -f "/usr/local/bin/pyenv" ]; then
+    eval "$(pyenv init -)"
+fi
+
+# User configuration
+export WORKON_HOME=$HOME/.virtualenvs
+[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
+export PIP_RESPECT_VIRTUALENV=true
+
 
 source $ZSH/oh-my-zsh.sh
 
