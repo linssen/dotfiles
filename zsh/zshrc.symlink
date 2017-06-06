@@ -74,12 +74,6 @@ if [ -f "/usr/local/bin/pyenv" ]; then
     eval "$(pyenv init -)"
 fi
 
-# User configuration
-export WORKON_HOME=$HOME/.virtualenvs
-[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
-export PIP_RESPECT_VIRTUALENV=true
-
-
 source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
