@@ -41,14 +41,12 @@
 	{
 		"osx":
 		[
-			"/usr/local/bin"
 		]
 	},
 	"python_paths":
 	{
 		"osx":
 		[
-			"/usr/local/bin"
 		]
 	},
 	"remember_open_files": false,
