@@ -13,10 +13,6 @@ sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 powerline=$HOME/.powerline/scripts
 my_bin=$HOME/.dotfiles/bin
 
-export WORKON_HOME=$HOME/.virtualenvs
-[[ -s /usr/local/bin/virtualenvwrapper.sh ]] && source /usr/local/bin/virtualenvwrapper.sh
-export PIP_RESPECT_VIRTUALENV=true
-
 # Bash completion
 if [ -f "/usr/local/bin/brew" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
