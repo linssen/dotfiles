@@ -79,7 +79,10 @@
         "passive_warnings": false,
         "paths": {
             "linux": [],
-            "osx": ["/usr/local/opt/pyenv/shims/"],
+            "osx": [
+                "/usr/local/opt/pyenv/shims/",
+                "/Users/wil/.nvm/versions/node/v6.9.1/bin/"
+            ],
             "windows": []
         },
         "python_paths": {
