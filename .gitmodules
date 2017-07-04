@@ -40,9 +40,9 @@
 [submodule "vim/vim.symlink/bundle/jshint2.vim"]
 	path = vim/vim.symlink/bundle/jshint2.vim
 	url = https://github.com/Shutnik/jshint2.vim.git
-[submodule "vim/vim.symlink/bundle/syntastic.vim"]
-	path = vim/vim.symlink/bundle/syntastic.vim
-	url = git@github.com:scrooloose/syntastic.git
 [submodule "tmux/tmux.symlink/plugins/tpm"]
 	path = tmux/tmux.symlink/plugins/tpm
 	url = https://github.com/tmux-plugins/tpm
+[submodule "vim/vim.symlink/bundle/ale.vim"]
+	path = vim/vim.symlink/bundle/ale.vim
+	url = https://github.com/w0rp/ale.git
