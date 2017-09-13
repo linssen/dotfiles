@@ -14,6 +14,7 @@
 		"Emmet",
 		"Git",
 		"GitGutter",
+		"Indent XML",
 		"INI",
 		"Jinja2",
 		"JSON Reindent",
@@ -27,6 +28,7 @@
 		"PackageResourceViewer",
 		"Puppet",
 		"ReactJS",
+		"Sass",
 		"SCSS",
 		"SideBarEnhancements",
 		"Solarized Color Scheme",
@@ -42,6 +44,7 @@
 		"SublimeLinter-pyflakes",
 		"SublimeLinter-pylint",
 		"Theme - Soda",
-		"Theme - Spacegray"
+		"Theme - Spacegray",
+		"Vue Syntax Highlight"
 	]
 }
