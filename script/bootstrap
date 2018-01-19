@@ -37,30 +37,11 @@ install_sublime () {
 
     if [ -d "$sublime_dir" ]; then
 
-        info 'replacing sublime packages with symlinks'
+        source="$DOTFILES_ROOT/sublime"
+        info "Overwriting User directory for sublime"
 
-        user "Replace existing Sublime packages with these ones? [y]es, [n]o"
-        read -n 1 action
-
-        case "$action" in
-            y )
-                overwrite=true;;
-            * )
-                overwrite=false;;
-        esac
-
-        if [ "$overwrite" == "true" ]
-        then
-
-            source="$DOTFILES_ROOT/sublime"
-
-            rm -rf "$sublime_dir/Packages" "$sublime_dir/Installed Packages"
-            link_files "$source/Packages" "$sublime_dir/Packages"
-            link_files "$source/Installed Packages" "$sublime_dir/Installed Packages"
-
-        else
-            success "didn't overwrite sublime packages"
-        fi
+        rm -rf "$sublime_dir/Packages/User"
+        link_files "$source/Packages/User" "$sublime_dir/Packages/User"
 
     else
         info "not installing Sublime because it's not there"

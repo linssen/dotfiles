@@ -1,3 +1,5 @@
+set nocompatible
+
 call pathogen#infect()
 filetype plugin indent on
 
@@ -66,7 +68,7 @@ nnoremap <leader>gs :Gstatus<cr>
 nnoremap <leader>gc :Gcommit<cr>
 nnoremap <leader>gd :Gdiff<cr>
 
-" Map nerdtree commenter to 
+" Map nerdtree commenter to
 map <D-/> ,c<space>
 
 " Splits
@@ -99,25 +101,18 @@ nnoremap <s-Enter> O<Ex>
 
 " Relative line numbering toggle
 " ----------------------------------------------------------------------
-function! g:ToggleNuMode() 
-    if(&rnu == 1) 
-        set nu 
-    else 
-        set rnu 
-    endif 
-endfunc 
+function! g:ToggleNuMode()
+    if(&rnu == 1)
+        set nu
+    else
+        set rnu
+    endif
+endfunc
 
 nnoremap <leader>l :call g:ToggleNuMode()<cr>
 set rnu
 
-
 " Linting
 " ----------------------------------------------------------------------
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
-
-let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
-let g:syntastic_check_on_open = 1
-let g:syntastic_check_on_wq = 0
+let g:ale_open_list = 1
+let g:airline#extensions#ale#enabled = 1

@@ -1,4 +1,9 @@
 vim/vim.symlink/.netrwhist
 sublime/Packages/**/*.cache
 sublime/Packages/User/Package Control.last-run
+Package Control.last-run
+Package Control.ca-list
+Package Control.ca-bundle
+Package Control.system-ca-bundle
+Package Control.ca-certs
 config/config.symlink/configstore/update-notifier-bower.yml
