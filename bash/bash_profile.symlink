@@ -10,18 +10,12 @@ unset file
 homebrew=/usr/local/bin:/usr/local/sbin
 node=/usr/local/lib/node
 node_packages=/usr/local/share/npm/bin
-sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
 powerline=$HOME/.powerline/scripts
 my_bin=$HOME/.dotfiles/bin
 
 # Bash completion
 if [ -f "/usr/local/bin/brew" ] && [ -f $(brew --prefix)/etc/bash_completion ]; then
     . $(brew --prefix)/etc/bash_completion
-fi
-
-# Init rbenv, if it's there
-if [ -f "/usr/local/bin/rbenv" ]; then
-    eval "$(rbenv init -)"
 fi
 
 green="\[\033[01;32m\]"
@@ -36,6 +30,4 @@ PS1="$PS1"'$([ -n "$TMUX" ] && tmux setenv TMUXPWD_$(tmux display -p "#I_#P") "$
 
 export PATH=$homebrew:$node:$node_packages:$powerline:$my_bin:$PATH
 
-if [ -d "$sublime" ]; then
-    export PATH=$sublime:$PATH
-fi
+export PATH="/usr/local/opt/sqlite/bin:$PATH"

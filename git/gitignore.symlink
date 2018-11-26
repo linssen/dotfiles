@@ -7,3 +7,4 @@
 .vscode
 .python-version
 node_modules
+.idea

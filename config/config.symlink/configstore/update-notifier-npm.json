@@ -1,4 +1,8 @@
 {
 	"optOut": false,
+<<<<<<< HEAD
 	"lastUpdateCheck": 1516286689203
+=======
+	"lastUpdateCheck": 1543221846603
+>>>>>>> aa19fdc... Ditch unused stuff, add jetbrains to ignore
 }
