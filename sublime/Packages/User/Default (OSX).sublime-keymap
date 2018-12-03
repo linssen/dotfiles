@@ -1,4 +1,0 @@
-[
-    { "keys": ["super+alt+shift+up"], "command": "goto_python_definition"},
-    { "keys": ["super+alt+shift+left"], "command": "back_to_python_definition"}
-]

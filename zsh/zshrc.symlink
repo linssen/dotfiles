@@ -53,18 +53,8 @@ ZSH_CUSTOM=~/.zsh/custom
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git pyenv rbenv nvm brew)
+plugins=(git pyenv nvm brew)
 
-sublime="/Applications/Sublime Text.app/Contents/SharedSupport/bin"
-my_bin=$HOME/.dotfiles/bin
-
-export PATH="$sublime:$my_bin:/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin"
-# export MANPATH="/usr/local/man:$MANPATH"
-if [ -d "$sublime" ]; then
-    export PATH=$sublime:$PATH
-fi
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
