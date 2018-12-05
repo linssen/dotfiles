@@ -31,23 +31,6 @@ link_files () {
     success "linked $1 to $2"
 }
 
-install_sublime () {
-
-    sublime_dir="$HOME/Library/Application Support/Sublime Text 3"
-
-    if [ -d "$sublime_dir" ]; then
-
-        source="$DOTFILES_ROOT/sublime"
-        info "Overwriting User directory for sublime"
-
-        rm -rf "$sublime_dir/Packages/User"
-        link_files "$source/Packages/User" "$sublime_dir/Packages/User"
-
-    else
-        info "not installing Sublime because it's not there"
-    fi
-}
-
 install_dotfiles () {
     info 'installing dotfiles'
 
@@ -116,7 +99,6 @@ install_dotfiles () {
 }
 
 install_dotfiles
-install_sublime
 
 echo ''
 echo '  All installed!'
