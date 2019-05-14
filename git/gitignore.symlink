@@ -8,3 +8,4 @@
 .python-version
 node_modules
 .idea
+*.icloud
