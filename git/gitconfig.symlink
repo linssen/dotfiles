@@ -14,27 +14,16 @@
 	whatadded = log --diff-filter=A
 [core]
     excludesfile = /Users/wil/.gitignore
-[merge]
-	tool = Kaleidoscope
+    editor = vim
 [difftool]
 	prompt = false
-[difftool "Kaleidoscope"]
-	cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
 [diff]
 	tool = Kaleidoscope
-[mergetool "Kaleidoscope"]
-	cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
 	trustExitCode = true
 [mergetool]
 	prompt = false
 [push]
 	default = simple
-[difftool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff -w \"$LOCAL\" \"$REMOTE\"
-	path =
-[mergetool "sourcetree"]
-	cmd = /usr/local/bin/ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
-	trustExitCode = true
 [filter "media"]
 	clean = git-media-clean %f
 	smudge = git-media-smudge %f
