@@ -9,37 +9,10 @@
 	url = https://github.com/mileszs/ack.vim.git
 [submodule "vim/vim.symlink/bundle/nerdcommenter.vim"]
 	path = vim/vim.symlink/bundle/nerdcommenter.vim
-	url = git://github.com/scrooloose/nerdcommenter.git
-[submodule "vim/vim.symlink/bundle/fugitive.vim"]
-	path = vim/vim.symlink/bundle/fugitive.vim
-	url = git://github.com/tpope/vim-fugitive.git
+	url = https://github.com/scrooloose/nerdcommenter.git
 [submodule "vim/vim.symlink/bundle/markdown.vim"]
 	path = vim/vim.symlink/bundle/markdown.vim
-	url = git://github.com/plasticboy/vim-markdown.git
-[submodule "vim/vim.symlink/bundle/coffee-script.vim"]
-	path = vim/vim.symlink/bundle/coffee-script.vim
-	url = git://github.com/kchmck/vim-coffee-script.git
-[submodule "vim/vim.symlink/bundle/textile.vim"]
-	path = vim/vim.symlink/bundle/textile.vim
-	url = git://github.com/timcharper/textile.vim.git
-[submodule "tmux/tmux.symlink/colors/solarized"]
-	path = tmux/tmux.symlink/colors/solarized
-	url = git://github.com/seebi/tmux-colors-solarized.git
+	url = https://github.com/plasticboy/vim-markdown.git
 [submodule "vim/vim.symlink/bundle/gitgutter.vim"]
 	path = vim/vim.symlink/bundle/gitgutter.vim
-	url = git://github.com/airblade/vim-gitgutter.git
-[submodule "powerline/powerline.symlink"]
-	path = powerline/powerline.symlink
-	url = git://github.com/Lokaltog/powerline
-[submodule "grunt/grunt-init.symlink/zepackage"]
-	path = grunt/grunt-init.symlink/zepackage
-	url = https://github.com/linssen/grunt-init-zepackage.git
-[submodule "vim/vim.symlink/bundle/jshint2.vim"]
-	path = vim/vim.symlink/bundle/jshint2.vim
-	url = https://github.com/Shutnik/jshint2.vim.git
-[submodule "tmux/tmux.symlink/plugins/tpm"]
-	path = tmux/tmux.symlink/plugins/tpm
-	url = https://github.com/tmux-plugins/tpm
-[submodule "vim/vim.symlink/bundle/ale.vim"]
-	path = vim/vim.symlink/bundle/ale.vim
-	url = https://github.com/w0rp/ale.git
+	url = https://github.com/airblade/vim-gitgutter.git
